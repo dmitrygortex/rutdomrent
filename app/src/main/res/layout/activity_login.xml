@@ -1,37 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/miitlogobox">
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="Мой Дом"
+        android:textColor="@color/blue"
+        android:textSize="48sp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/white_background_left_1"
-        android:padding="@dimen/base_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="23dp"
+
+        android:layout_marginBottom="40dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_nook_shape"
+            android:orientation="vertical"
+            android:padding="21dp">
+            >
+
+            <!-- Следующие элементы вложены в LinearLayout -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="62dp"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:text="Авторизация"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/Login"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="50.3dp"
+
+                android:layout_marginTop="45dp"
+                android:background="@drawable/button_time_shape"
+                android:fontFamily="@font/inter_light"
+                android:hint="Логин"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:textColorHint="@color/black"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/Password"
+                android:layout_width="match_parent"
+                android:layout_height="50.3dp"
+                android:layout_marginTop="35dp"
+                android:gravity="center"
+
+                android:background="@drawable/button_time_shape"
+                android:fontFamily="@font/inter_light"
+                android:hint="Пароль"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColorHint="@color/black"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonLogin"
+                android:layout_width="192dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="44dp"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="20sp"
+                android:background="@drawable/button_time_shape"
+                android:text="Войти"
+
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/textViewCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="23dp"
+                android:text="Создать аккаунт"
+                android:textColor="@color/white4"
+                android:textSize="14sp" />
 
 
-        <TextView
-            android:id="@+id/title_rent_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_bold"
-            android:text="Бронирование"
-            android:textSize="40sp"
-            android:textColor="@color/darkblue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
+    </androidx.cardview.widget.CardView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
