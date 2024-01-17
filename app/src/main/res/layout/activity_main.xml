@@ -1,18 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+<?xml version="1.0" encoding="utf-8"?><androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"    android:layout_width="match_parent"
+    android:layout_height="match_parent"    android:orientation="vertical"
+    android:layout_gravity="center"    android:padding="24dp">
+    <!-- Заголовок 'Информация' -->
+    <!-- Описание -->
+    <!-- Дополнительный текст. Добавьте дополнительные TextView для полной информации. -->
+    <!-- График работы -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Привет!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:id="@+id/tvInfoHeader"        android:layout_width="0dp"
+        android:layout_height="wrap_content"        android:layout_marginTop="32dp"
+        android:text="Информация"        android:textColor="@color/blue"
+        android:textSize="24sp"        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvDescription1"        android:layout_width="0dp"
+        android:layout_height="wrap_content"        android:layout_marginTop="152dp"
+        android:text="Мой Дом - это приложение..."        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvAddressTitle"        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvInfoHeader" />
+    <!-- Адрес -->
+    <TextView        android:id="@+id/tvWorkingHoursTitle"
+        android:layout_width="0dp"        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"        android:text="График работы Дома:"
+        android:textSize="16sp"        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toBottomOf="@id/предыдущий_textview_id" />
+    <TextView
+        android:id="@+id/tvWorkingHours"        android:layout_width="0dp"
+        android:layout_height="wrap_content"        android:layout_marginTop="240dp"
+        android:text="по будням с 10:00 до 20:00"        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toBottomOf="@id/tvWorkingHoursTitle" />
+    <TextView
+        android:id="@+id/tvAddressTitle"        android:layout_width="0dp"
+        android:layout_height="wrap_content"        android:layout_marginTop="196dp"
+        android:text="Адрес:"        android:textSize="16sp"
+        android:textStyle="bold"        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingHours" />
+    <TextView
+        android:id="@+id/tvAddress"        android:layout_width="0dp"
+        android:layout_height="wrap_content"        android:layout_marginTop="12dp"
+        android:text="ул. Образцова, 21"        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toBottomOf="@id/tvAddressTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

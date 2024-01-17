@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">rut_project</string>
+	<!-- home strings -->
+
+	<string name="app_name">Page 1</string>
+	<string name="Moi_dom">Мой дом</string>
 </resources>
