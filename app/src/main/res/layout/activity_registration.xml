@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="23dp"
+        android:layout_width="330dp"
+        android:layout_height="588dp"
+        android:layout_marginStart="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.494">
 
-        android:layout_marginBottom="20dp"
-        app:cardBackgroundColor="@color/blue"
-        app:cardCornerRadius="14dp">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
             android:background="@drawable/button_nook_shape"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="21dp">
-            >
 
+            android:padding="21dp">
 
             <TextView
+                android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="62dp"
@@ -36,127 +37,168 @@
                 android:fontFamily="@font/inter_bold"
                 android:gravity="center"
                 android:text="Регистрация"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textColor="@color/white4"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/Login"
+                android:id="@+id/editTextText11"
                 android:layout_width="match_parent"
-                android:layout_height="47.3dp"
-                android:layout_marginTop="19dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Логин"
                 android:inputType="textEmailAddress"
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextText12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/Initials"
+                android:id="@+id/editTextText12"
                 android:layout_width="match_parent"
-                android:layout_height="47.3dp"
-                android:layout_marginTop="19dp"
-                android:background="@drawable/button_time_shape"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
 
+                android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="ФИО"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextText13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/Email"
-                android:layout_width="match_parent"
-                android:layout_height="47.3dp"
-                android:layout_marginTop="19dp"
-                android:background="@drawable/button_time_shape"
+                android:id="@+id/editTextText13"
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
+
+                android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Email"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextText14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/Password"
+                android:id="@+id/editTextText14"
                 android:layout_width="match_parent"
-                android:layout_height="47.3dp"
-                android:layout_marginTop="17dp"
-                android:background="@drawable/button_time_shape"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
 
+                android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Пароль"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextText15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/Institute"
+                android:id="@+id/editTextText15"
                 android:layout_width="match_parent"
-                android:layout_height="47.3dp"
-                android:layout_marginTop="17dp"
-                android:background="@drawable/button_time_shape"
+                android:layout_height="wrap_content"
 
+                android:layout_marginBottom="19dp"
+                android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Институт"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
+
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextText16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/Phone"
+                android:id="@+id/editTextText16"
                 android:layout_width="match_parent"
-                android:layout_height="47.3dp"
-                android:layout_marginTop="19dp"
-                android:background="@drawable/button_time_shape"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="88dp"
 
+                android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Номер телефона"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
-                android:textSize="20sp" />
-
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonLogin"
+                android:id="@+id/button"
                 android:layout_width="192dp"
                 android:layout_height="56dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_bold"
                 android:text="Регистрация"
+                android:textAllCaps="false"
                 android:textColor="@color/blue"
 
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextText16"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewCreateAccount"
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="14dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="Уже есть аккаунт? Ввойдите"
                 android:textColor="@color/white4"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

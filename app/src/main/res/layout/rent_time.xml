@@ -20,6 +20,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="68dp"
         android:layout_marginEnd="68dp"
+
         android:layout_marginBottom="48dp"
         android:background="@drawable/button_nook_shape"
         android:fontFamily="@font/inter_bold"
