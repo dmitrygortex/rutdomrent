@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/button_nook_shape"
+            android:background="@drawable/button_blue_shape"
 
             android:padding="21dp">
 
