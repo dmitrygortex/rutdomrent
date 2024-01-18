@@ -1,0 +1,45 @@
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Jan 17 15:39:59 MSK 2024\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-8.2-bin.zip\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	
++++ b/gradle/wrapper/gradle-wrapper.properties	
+@@ -1,6 +1,6 @@
+-#Wed Jan 17 15:39:59 MSK 2024
++#Thu Jan 18 12:10:53 MSK 2024
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.5-bin.zip
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+Index: .gradle/config.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Jan 17 15:39:55 MSK 2024\r\njava.home=C\\:\\\\Program Files\\\\Android\\\\Android Studio\\\\jbr\r\n
+===================================================================
+diff --git a/.gradle/config.properties b/.gradle/config.properties
+--- a/.gradle/config.properties	
++++ b/.gradle/config.properties	
+@@ -1,2 +1,2 @@
+-#Wed Jan 17 15:39:55 MSK 2024
+-java.home=C\:\\Program Files\\Android\\Android Studio\\jbr
++#Thu Jan 18 18:46:53 MSK 2024
++java.home=C\:\\Program Files\\Android\\Android Studio1\\jbr
+Index: .gradle/buildOutputCleanup/cache.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Jan 17 15:40:14 MSK 2024\r\ngradle.version=8.2\r\n
+===================================================================
+diff --git a/.gradle/buildOutputCleanup/cache.properties b/.gradle/buildOutputCleanup/cache.properties
+--- a/.gradle/buildOutputCleanup/cache.properties	
++++ b/.gradle/buildOutputCleanup/cache.properties	
+@@ -1,2 +1,2 @@
+-#Wed Jan 17 15:40:14 MSK 2024
+-gradle.version=8.2
++#Thu Jan 18 13:13:43 MSK 2024
++gradle.version=8.5
