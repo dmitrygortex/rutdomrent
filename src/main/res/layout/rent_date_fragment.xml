@@ -4,21 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/miitlogobox">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/white_background_left_1"
-        android:padding="@dimen/base_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+    android:background="@color/white"
+    android:padding="@dimen/base_padding">
         <TextView
             android:id="@+id/title_rent_label"
             android:layout_width="wrap_content"
@@ -26,6 +13,7 @@
             android:fontFamily="@font/inter_bold"
             android:text="Бронирование"
             android:textSize="40sp"
+            android:layout_marginVertical="@dimen/vertical_margin"
             android:textColor="@color/darkblue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/input_edittext_background"
@@ -107,9 +96,18 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/booking_button"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="Далее"
+            android:layout_margin="@dimen/vertical_margin"
+            android:textColor="@color/white"
+            android:background="@drawable/button_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
