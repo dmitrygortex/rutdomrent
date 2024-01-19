@@ -1,4 +1,4 @@
-package com.example.rut_project;
+package com.example.rutdomandroid;
 
 import android.app.Activity;
 import android.os.Bundle;

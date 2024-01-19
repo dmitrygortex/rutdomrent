@@ -13,9 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-<<<<<<< HEAD
 rootProject.name = "rutdomandroid"
-=======
-rootProject.name = "rut_project"
->>>>>>> feature/Bogdan
+
 include ':app'

@@ -1,4 +1,4 @@
-package com.example.rut_project;
+package com.example.rutdomandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 

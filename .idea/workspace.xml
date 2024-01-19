@@ -4,12 +4,53 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/font/fonts.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/list_time.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0b8aba8-9136-4308-a60c-44d5da3dac67" name="Changes" comment="" />
+    <list default="true" id="d0b8aba8-9136-4308-a60c-44d5da3dac67" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/rut_project/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rut_project/Info1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rutdomandroid/Info1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rut_project/Info2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rutdomandroid/Info2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/font/fonts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/font/fonts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/font/inter_bold.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/font/inter_extralight.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/font/inter_extralight.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/font/inter_extralight.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/font/inter_light.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_time.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_time.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/rut_project/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +59,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Георгий\.android\avd\Pixel_5_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ÐÐµÐ¾ÑÐ³Ð¸Ð¹\.android\avd\Pixel_5_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -110,9 +151,14 @@
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Android\rutdomandroid\app\src\main\res\font" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="rut_project.app.main" />
+      <module name="rutdomandroid.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -182,7 +228,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bde84fd2-b696-4936-8c10-04771d73f75d" name="Changes" comment="" />
+      <changelist id="d0b8aba8-9136-4308-a60c-44d5da3dac67" name="Changes" comment="" />
       <created>1705495195977</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -201,7 +247,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/feature/Bogdan" />
+                        <option value="feature/Gosha" />
                       </list>
                     </value>
                   </entry>

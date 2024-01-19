@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
+        android:text="10:00 - 11:00"
         android:textColor="@color/black"
-        android:textSize="44sp"
-        android:text="10:00 - 11:00"/>
+        android:textSize="44sp" />
 </LinearLayout>
