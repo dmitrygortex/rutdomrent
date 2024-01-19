@@ -3,11 +3,19 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace 'com.example.rutdomandroid'
     compileSdk 34
 
     defaultConfig {
         applicationId "com.example.rutdomandroid"
+=======
+    namespace 'com.example.rut_project'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.rut_project"
+>>>>>>> feature/Bogdan
         minSdk 24
         targetSdk 34
         versionCode 1
@@ -31,8 +39,11 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
+<<<<<<< HEAD
     runtimeOnly 'com.google.android.material:material:1.11.0'
 
+=======
+>>>>>>> feature/Bogdan
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'

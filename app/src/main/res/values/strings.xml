@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <resources>
     <string name="app_name">rutdomandroid</string>
     <string name="time_value1">10:00-11:00</string>
@@ -12,4 +13,12 @@
     <string name="time_value10">19:00-20:00</string>
 
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- home strings -->
+
+	<string name="app_name">Page 1</string>
+	<string name="Moi_dom">Мой дом</string>
+>>>>>>> feature/Bogdan
 </resources>
