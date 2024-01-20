@@ -34,4 +34,28 @@
         <item name="android:popupBackground">@color/blue4</item>
     </style>
 
+
+    <style name="CalenderViewDateCustomText" parent="android:Widget.CalendarView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:weekNumberColor">@color/white</item>
+        <item name="android:yearListSelectorColor">@color/white</item>
+
+
+
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:yearListSelectorColor">@color/white</item>
+        <item name="android:startYear">@color/white</item>
+        <item name="android:endYear">@color/white</item>
+
+        <item name="android:headerYearTextAppearance">@color/white</item>
+
+
+    </style>
+
+
 </resources>

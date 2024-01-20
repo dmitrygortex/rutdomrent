@@ -23,6 +23,9 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="wrap_content"
+        android:theme="@style/CalenderViewDateCustomText"
+
+    android:dateTextAppearance="@style/CalenderViewWeekCustomText"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +60,8 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
+            android:padding="12dp"
+            android:paddingLeft="10dp"
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
@@ -71,21 +76,22 @@
         app:layout_constraintStart_toStartOf="@+id/describe_label_1"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/input_edittext_background"
         android:gravity="center_vertical"
         android:paddingLeft="24dp"
-        app:helperText="Ваша цель посещения"
+        android:hint="Ваша цель посещения"
+        android:textColorHint="@color/black"
         app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="@id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@id/describe_label_2">
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </EditText>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/booking_button"

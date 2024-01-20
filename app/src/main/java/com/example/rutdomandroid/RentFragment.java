@@ -3,12 +3,17 @@ package com.example.rutdomandroid;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
+import com.example.rutdomandroid.databinding.FragmentRegisterBinding;
+import com.example.rutdomandroid.databinding.FragmentRentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +21,7 @@ import com.example.rutdomandroid.databinding.ActivityMainBinding;
  * create an instance of this fragment.
  */
 public class RentFragment extends Fragment {
+    FragmentRentBinding binding;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -61,8 +67,14 @@ public class RentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentRentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        String[] values=getResources().getStringArray(R.array.rooms);
+        Spinner spinner=binding.spinner;
+        ArrayAdapter<String> adapter=new ArrayAdapter(inflater.getContext(),android.R.layout.simple_spinner_item,values);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rent, container, false);
+        return view;
     }
 }

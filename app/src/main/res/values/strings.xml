@@ -1,4 +1,10 @@
 <resources>
+    <string-array name="rooms">
+        <item>Лекторий</item>
+        <item>Переговорная</item>
+        <item>Фотостудия</item>
+        <item>Коворкинг</item>
+    </string-array>
     <string name="app_name">rutdomandroid</string>
     <string name="time_value1">10:00-11:00</string>
     <string name="time_value2">11:00-12:00</string>
