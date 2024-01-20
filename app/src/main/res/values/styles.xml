@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="NavigationBar">
+    <item name="android:windowTranslucentNavigation">true</item>
+    <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
+    </style>
 
 	<!-- home styles -->
     <style name="DescribeTextView">
@@ -27,4 +33,5 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:popupBackground">@color/blue4</item>
     </style>
+
 </resources>

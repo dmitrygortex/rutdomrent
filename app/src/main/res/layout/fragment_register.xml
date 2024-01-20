@@ -4,20 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="20dp">
+    tools:context=".RegisterFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="330dp"
-        android:layout_height="588dp"
-        android:layout_marginStart="21dp"
+        android:layout_height="615dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -48,7 +43,7 @@
                 android:id="@+id/editTextText11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
+                android:layout_marginBottom="25dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -68,7 +63,7 @@
                 android:id="@+id/editTextText12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
+                android:layout_marginBottom="25dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -89,7 +84,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
+                android:layout_marginBottom="25dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -109,7 +104,7 @@
                 android:id="@+id/editTextText14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
+                android:layout_marginBottom="25dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -130,7 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginBottom="19dp"
+                android:layout_marginBottom="25dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
@@ -161,7 +156,7 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintBottom_toTopOf="@+id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -179,14 +174,14 @@
                 android:textColor="@color/blue"
 
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintBottom_toTopOf="@+id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText16"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/login_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

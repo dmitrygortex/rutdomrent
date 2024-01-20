@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
 
@@ -21,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new InfoFragment());
+        replaceFragment(new LoginFragment());
+        binding.buttonNavView.setVisibility(View.GONE);
 
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if  (item.getItemId()==R.id.info_item) {
@@ -43,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
-
-
-
-
+    public void setButtonNavViewVisibility(int visibility) {
+        binding.buttonNavView.setVisibility(visibility);
+    }
 }
+
+
+
+
+

@@ -13,27 +13,23 @@
         android:background="@color/blue"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        android:visibility="visible"
-        android:elevation="100dp"
-        android:fitsSystemWindows="true"
-
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frame_layout"
-
-        android:name="com.example.rutdomandroid.InfoFragment"
+        android:name="com.example.rutdomandroid.LoginFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/button_nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_info">
+        tools:layout="@layout/fragment_login">
 
     </androidx.fragment.app.FragmentContainerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
