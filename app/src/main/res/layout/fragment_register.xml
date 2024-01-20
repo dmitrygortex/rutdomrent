@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter_bold"
                 android:text="Уже есть аккаунт? Ввойдите"
                 android:textColor="@color/white4"
                 android:textSize="14sp"

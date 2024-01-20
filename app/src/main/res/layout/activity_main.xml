@@ -3,35 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".RentTimeActivity">
+    tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/time_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/booking_button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-3dp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/booking_button"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/button_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginStart="84dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/button_blue_shape"
-        android:elevation="4dp"
-        android:fontFamily="@font/inter_bold"
-        android:padding="16dp"
-        android:text="Забронировать"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/time_recycler"
+        android:background="@color/blue"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
+        android:visibility="visible"
+        android:elevation="100dp"
+        android:fitsSystemWindows="true"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frame_layout"
+
+        android:name="com.example.rutdomandroid.InfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/button_nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_info">
+
+    </androidx.fragment.app.FragmentContainerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,8 @@
     <string name="time_value8">17:00-18:00</string>
     <string name="time_value9">18:00-19:00</string>
     <string name="time_value10">19:00-20:00</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
 
