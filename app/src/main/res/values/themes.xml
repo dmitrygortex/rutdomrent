@@ -8,4 +8,5 @@
 
     <style name="Theme.Rutdomandroid" parent="Base.Theme.Rutdomandroid" />
     <style name="Theme.Rut_project" parent="Base.Theme.Rut_project" />
+
 </resources>
