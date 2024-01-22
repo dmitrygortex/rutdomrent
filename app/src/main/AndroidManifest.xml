@@ -13,16 +13,13 @@
         android:theme="@style/Theme.Rut_project"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterFragment"
-            android:exported="false" />
-        <activity
-            android:name=".LoginFragment"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashFragment"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Rut_project">
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
