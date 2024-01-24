@@ -41,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout,fragment);
-        fragmentTransaction.commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.frame_layout,fragment, null)
+                .setReorderingAllowed(false)
+                .addToBackStack("name") // Name can be null
+                .commit();
     }
     public void setButtonNavViewVisibility(int visibility) {
         binding.buttonNavView.setVisibility(visibility);

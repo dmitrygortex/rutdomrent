@@ -97,14 +97,14 @@
                 android:padding="10dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+                app:layout_constraintBottom_toTopOf="@+id/changeAccount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonLogin"
+                android:id="@+id/changeAccount"
                 android:layout_width="192dp"
                 android:layout_height="56dp"
                 android:layout_gravity="center_horizontal"
