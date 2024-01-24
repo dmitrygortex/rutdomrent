@@ -64,7 +64,7 @@
             android:text="Настройки профиля"
 
             android:textColor="@color/blue"
-            android:textSize="35sp"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,9 +151,11 @@
 
             android:ems="10"
             android:fontFamily="@font/inter_light"
-            android:hint="ФИО"
+            android:hint="Email"
             android:inputType="text"
             android:minHeight="48dp"
+            android:textColor="@color/black"
+
             android:paddingLeft="10dp"
             android:textColorHint="@drawable/selector"
             android:textSize="20sp"
@@ -170,11 +172,13 @@
             android:background="@drawable/button_time_shape"
             android:ems="10"
             android:fontFamily="@font/inter_light"
-            android:hint="Пароль"
-            android:inputType="textPassword"
+            android:hint="Институт"
+            android:inputType="text"
             android:minHeight="48dp"
             android:padding="5dp"
             android:paddingLeft="10dp"
+            android:textColor="@color/black"
+
             android:textColorHint="@drawable/selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -188,8 +192,9 @@
             android:background="@drawable/button_time_shape"
             android:ems="10"
             android:fontFamily="@font/inter_light"
+            android:textColor="@color/black"
 
-            android:hint="Электронная почта"
+            android:hint="ФИО"
             android:inputType="text"
             android:minHeight="48dp"
             android:padding="5dp"
@@ -207,11 +212,11 @@
             android:layout_marginTop="4dp"
             android:background="@drawable/button_time_shape"
             android:ems="10"
-
+            android:inputType="textPassword"
             android:fontFamily="@font/inter_light"
-            android:hint="Институт"
-            android:inputType="text"
+            android:hint="Пароль"
             android:minHeight="48dp"
+            android:textColor="@color/black"
 
             android:padding="5dp"
             android:paddingLeft="10dp"
