@@ -40,10 +40,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextText11"
+                android:id="@+id/editTextLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_marginVertical="25dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -54,13 +54,14 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText12"
+                app:layout_constraintBottom_toTopOf="@id/editTextFullName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView11"/>
 
             <EditText
-                android:id="@+id/editTextText12"
+                android:id="@+id/editTextFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
@@ -74,17 +75,18 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText13"
+                app:layout_constraintBottom_toTopOf="@id/editTextEmail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextLogin" />
 
             <EditText
-                android:id="@+id/editTextText13"
+                android:id="@+id/editTextEmail"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="60dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -95,16 +97,18 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText14"
+                app:layout_constraintBottom_toTopOf="@id/editTextPassword"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextFullName"
+                />
 
             <EditText
-                android:id="@+id/editTextText14"
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="16dp"
 
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
@@ -115,13 +119,14 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText15"
+                app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+                app:layout_constraintBottom_toTopOf="@id/editTextInstitute"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextText15"
+                android:id="@+id/editTextInstitute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -136,13 +141,14 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText16"
+                app:layout_constraintBottom_toTopOf="@id/editTextPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@id/editTextPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextText16"
+                android:id="@+id/editTextPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="88dp"
@@ -156,9 +162,10 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/login_label"
+                app:layout_constraintBottom_toTopOf="@id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@id/editTextInstitute"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -177,7 +184,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText16"
+                app:layout_constraintTop_toBottomOf="@id/editTextPhoneNumber"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -191,6 +198,7 @@
                 android:textColor="@color/white4"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent" />
