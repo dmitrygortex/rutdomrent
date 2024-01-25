@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -38,6 +40,7 @@ import java.util.Map;
 public class ProfileFragment extends Fragment {
 
     FragmentProfileBinding binding;
+    String email_first,password_first;
 
 
     @Override
@@ -57,6 +60,9 @@ public class ProfileFragment extends Fragment {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
+                                email_first=document.getString("email");
+                                password_first=document.getString("password");
+
                                 binding.editTextText2.setText(document.getString("email"));
                                 binding.editTextText5.setText(document.getString("password"));
                                 binding.editTextText4.setText(document.getString("ФИО"));
@@ -109,25 +115,31 @@ public class ProfileFragment extends Fragment {
                 data.put("ФИО", fio);
                 db.collection("users").document(user.getUid())
                         .update(data);
-                auth.getCurrentUser().updateEmail(email)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "User email address updated.");
-                                }
-                            }
-                        });
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                auth.getCurrentUser().updatePassword(password)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                AuthCredential credential = EmailAuthProvider.getCredential(email_first, password_first); // Current Login Credentials
+
+                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Log.d("value", "User re-authenticated.");
+
+                        // Now change your email address \\
+                        //----------------Code for Changing Email Address----------\\
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Log.d(TAG, "User password updated.");
+                                    Toast.makeText(getContext(), "Email Changed"  ,Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
+                    }
+                });
+
+
 
             }
         });

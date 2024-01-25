@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:background="@drawable/button_time_shape"
+    android:background="@drawable/button_green_shape"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:layout_marginStart="16dp"
@@ -17,6 +17,6 @@
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
         android:text="10:00 - 11:00"
-        android:textColor="@color/black"
-        android:textSize="44sp" />
+        android:textColor="@color/green"
+        android:textSize="24sp" />
 </LinearLayout>
