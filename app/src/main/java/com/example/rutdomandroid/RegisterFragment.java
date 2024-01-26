@@ -33,15 +33,12 @@ public class RegisterFragment extends Fragment {
     FragmentRegisterBinding binding;
 
 
-    TextView loginLabel;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        loginLabel = binding.button;
 
         return view;
     }

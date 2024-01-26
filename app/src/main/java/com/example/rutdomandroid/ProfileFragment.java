@@ -187,6 +187,8 @@ public class ProfileFragment extends Fragment {
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                db.collection("users").document(auth.getCurrentUser().getUid()).delete();
+
                                 auth.getCurrentUser().delete()
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
