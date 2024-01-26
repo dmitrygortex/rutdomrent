@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder> {
-    private static final String VIEW_TYPE_1 = "GREEN";
-    private static final String VIEW_TYPE_2 = "BLUE";
-
+    private boolean isClickable;
     private List<TimeSlot> timeSlots;
 
     private LayoutInflater layoutInflater;
@@ -24,6 +22,15 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
     public TimeAdapter(List<TimeSlot> timeSlots, Context context) {
         this.timeSlots = timeSlots;
         this.layoutInflater = LayoutInflater.from(context);
+        this.isClickable = true;
+    }
+
+    public boolean isClickable() {
+        return isClickable;
+    }
+
+    public void setClickable() {
+        this.isClickable = !isClickable;
     }
 
     public TimeSlot getItem(int position) {
@@ -54,16 +61,18 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
                             ContextCompat.getDrawable(v.getContext(), R.drawable.button_green_shape));
                     holder.timeText.setTextColor(ContextCompat.getColor(v.getContext(), R.color.green));
                     value.setSelected(false);
-                } else {
+                    setClickable();
+                } else if (!value.isSelected() && isClickable) {
                     holder.itemView.setBackground(
                             ContextCompat.getDrawable(v.getContext(), R.drawable.button_blue_shape));
                     holder.timeText.setTextColor(ContextCompat.getColor(v.getContext(), R.color.blue));
                     value.setSelected(true);
-
-
+                    setClickable();
                 }
 
             }
+
+
         });
 
     }
