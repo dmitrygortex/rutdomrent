@@ -41,52 +41,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-
-                android:id="@+id/editTextLogin"
+                android:id="@+id/FIO_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="25dp"
 
+                android:layout_marginBottom="28dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
-                android:hint="Логин"
+                android:hint="ФИО"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextFullName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView11"/>
-
-            <EditText
-                android:id="@+id/editTextFullName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-
-                android:background="@drawable/button_time_shape"
-                android:fontFamily="@font/inter_light"
-                android:gravity="center"
-                android:hint="ФИО"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:padding="8dp"
-                android:textColorHint="@color/black"
-                android:textSize="20sp"
-
-                app:layout_constraintBottom_toTopOf="@id/editTextEmail"
+                app:layout_constraintBottom_toTopOf="@+id/email_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextLogin" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-
-                android:id="@+id/editTextEmail"
+                android:id="@+id/email_text"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,19 +76,15 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-
-                app:layout_constraintBottom_toTopOf="@id/editTextPassword"
+                app:layout_constraintBottom_toTopOf="@+id/password_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextFullName"
-                />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
 
                 android:layout_marginTop="220dp"
                 android:background="@drawable/button_time_shape"
@@ -125,17 +96,13 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-
-                app:layout_constraintTop_toBottomOf="@id/editTextEmail"
-                app:layout_constraintBottom_toTopOf="@id/editTextInstitute"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView11" />
 
             <EditText
-
-                android:id="@+id/editTextInstitute"
+                android:id="@+id/institute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -145,38 +112,15 @@
                 android:gravity="center"
                 android:hint="Институт"
 
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:padding="8dp"
-                android:textColorHint="@color/black"
-                android:textSize="20sp"
-
-                app:layout_constraintBottom_toTopOf="@id/editTextPhoneNumber"
-                app:layout_constraintTop_toBottomOf="@id/editTextPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
-                android:id="@+id/editTextPhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="88dp"
-
-                android:background="@drawable/button_time_shape"
-                android:fontFamily="@font/inter_light"
-                android:gravity="center"
-                android:hint="Номер телефона"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@id/editTextInstitute"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView11" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
@@ -193,10 +137,7 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextPhoneNumber"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/login_label"
@@ -209,7 +150,6 @@
                 android:textColor="@color/white4"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent" />
