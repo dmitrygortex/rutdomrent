@@ -5,24 +5,19 @@
         <item>Фотостудия</item>
         <item>Коворкинг</item>
     </string-array>
-    <string-array name="time_values">
-        <item>10:00-11:00</item>
-        <item>11:00-12:00</item>
-        <item>12:00-13:00</item>
-        <item>13:00-14:00</item>
-        <item>14:00-15:00</item>
-        <item>15:00-16:00</item>
-        <item>16:00-17:00</item>
-        <item>17:00-18:00</item>
-        <item>18:00-19:00</item>
-        <item>19:00-20:00</item>
-
-    </string-array>
-
     <string name="app_name">rutdomandroid</string>
+    <string name="time_value1">10:00-11:00</string>
+    <string name="time_value2">11:00-12:00</string>
+    <string name="time_value3">12:00-13:00</string>
+    <string name="time_value4">13:00-14:00</string>
+    <string name="time_value5">14:00-15:00</string>
+    <string name="time_value6">15:00-16:00</string>
+    <string name="time_value7">16:00-17:00</string>
+    <string name="time_value8">17:00-18:00</string>
+    <string name="time_value9">18:00-19:00</string>
+    <string name="time_value10">19:00-20:00</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>
 
 

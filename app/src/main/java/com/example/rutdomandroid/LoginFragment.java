@@ -31,14 +31,14 @@ public class LoginFragment extends Fragment {
             View view = binding.getRoot();
 
             registerlabel=(TextView) binding.createAccoutLabel;
-            loginButton=(Button)  binding.changeAccount;
+            loginButton=(Button)  binding.buttonLogin;
         registerlabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager =requireActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_layout, new RegisterFragment(), null)
-                        .setReorderingAllowed(false)
+                        .setReorderingAllowed(true)
                         .addToBackStack("name")
                         .commit();
             }

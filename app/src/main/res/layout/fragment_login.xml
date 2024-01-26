@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/blue_shape"
+            android:background="@drawable/button_blue_shape"
 
             android:padding="21dp">
 
@@ -97,14 +97,14 @@
                 android:padding="10dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/changeAccount"
+                app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/changeAccount"
+                android:id="@+id/buttonLogin"
                 android:layout_width="192dp"
                 android:layout_height="56dp"
                 android:layout_gravity="center_horizontal"

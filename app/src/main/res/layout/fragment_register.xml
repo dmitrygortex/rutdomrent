@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="330dp"
-        android:layout_height="570dp"
+        android:layout_height="615dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/blue_shape"
+            android:background="@drawable/button_blue_shape"
             android:gravity="center_horizontal"
             android:orientation="vertical"
 
@@ -28,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="62dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="62dp"
                 android:fontFamily="@font/inter_bold"
                 android:gravity="center"
@@ -41,7 +40,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-
                 android:id="@+id/editTextLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,12 +70,11 @@
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="ФИО"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-
                 app:layout_constraintBottom_toTopOf="@id/editTextEmail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -85,13 +82,12 @@
                 app:layout_constraintTop_toBottomOf="@id/editTextLogin" />
 
             <EditText
-
                 android:id="@+id/editTextEmail"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
 
-                android:layout_marginBottom="36dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
@@ -101,7 +97,6 @@
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-
                 app:layout_constraintBottom_toTopOf="@id/editTextPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -115,42 +110,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
 
-                android:layout_marginTop="220dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Пароль"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-
                 app:layout_constraintTop_toBottomOf="@id/editTextEmail"
                 app:layout_constraintBottom_toTopOf="@id/editTextInstitute"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView11" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-
                 android:id="@+id/editTextInstitute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="304dp"
+                android:layout_marginBottom="25dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Институт"
+                android:inputType="textEmailAddress"
 
-                android:inputType="text"
                 android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-
                 app:layout_constraintBottom_toTopOf="@id/editTextPhoneNumber"
                 app:layout_constraintTop_toBottomOf="@id/editTextPassword"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -183,17 +173,16 @@
                 android:layout_width="192dp"
                 android:layout_height="56dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_bold"
                 android:text="Регистрация"
                 android:textAllCaps="false"
-
                 android:textColor="@color/blue"
+
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/login_label"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editTextPhoneNumber"
                 app:layout_constraintVertical_bias="0.0" />
