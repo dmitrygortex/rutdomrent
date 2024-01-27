@@ -38,7 +38,12 @@ public class LoginFragment extends Fragment {
     EditText email_text,password_text;
     String email,password;
 
-
+    private Boolean isValidEmail(String email){
+        return (email.contains("@") && email.contains("."));
+    }
+    private Boolean isValidPassword(String password){
+        return (password.length() >= 8);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,19 +74,18 @@ public class LoginFragment extends Fragment {
                 String email = binding.emailSignIn.getText().toString();
                 String password = binding.passwordSignIn.getText().toString();
 
-                if (email.isEmpty()) {
-                    Toast.makeText(getContext(), "Поле email  должно быть заполнено", Toast.LENGTH_SHORT).show();
+                if (!isValidEmail(email)) {
+                    Toast.makeText(getContext(), "Невозможная почта. Пример: example@domen.com", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.length() < 8) {
+                if (!isValidPassword(password)) {
                     Toast.makeText(getContext(), "Минимальная длина пароля 8 символов", Toast.LENGTH_SHORT).show();
-
                     return;
                 }
-                if (password.isEmpty()) {
-                    Toast.makeText(getContext(), "Поле Пароль должно быть заполнено", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (password.isEmpty()) {
+//                    Toast.makeText(getContext(), "Поле Пароль должно быть заполнено", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
