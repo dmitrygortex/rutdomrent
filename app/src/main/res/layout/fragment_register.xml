@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/button_blue_shape"
+            android:background="@drawable/blue_shape"
             android:gravity="center_horizontal"
             android:orientation="vertical"
 
@@ -91,7 +91,7 @@
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Пароль"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:padding="8dp"
                 android:textColorHint="@color/black"
