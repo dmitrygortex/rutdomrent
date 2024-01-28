@@ -77,10 +77,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0b8aba8-9136-4308-a60c-44d5da3dac67" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_01_2024_18_47_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_01_2024_18_47_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_01_2024_18_47_[Changes]1/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_01_2024_18_47_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_01_2024_18_47__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_01_2024_11_49_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_01_2024_11_49__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_01_2024_15_24_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_01_2024_15_24__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_01_2024_15_34_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_01_2024_15_34__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rutdomandroid/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rutdomandroid/ProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,25 +169,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "ScreenRecorder.SavePath": "C:\\Users\\Георгий",
-    "android-custom-viewC:/Users/Георгий/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatButton.java_SELECTED": "AppCompatButton",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "feature/Gosha",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/79689/AndroidStudioProjects/rut_project/rutdomrent",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;C:\\Users\\Георгий&quot;,
+    &quot;android-custom-viewC:/Users/Георгий/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/AppCompatButton.java_SELECTED&quot;: &quot;AppCompatButton&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/Gosha&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/79689/AndroidStudioProjects/rut_project/rutdomrent&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
