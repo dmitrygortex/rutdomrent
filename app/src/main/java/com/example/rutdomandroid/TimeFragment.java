@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
@@ -70,42 +71,34 @@ public class TimeFragment extends Fragment {
             timeSlots.add(new TimeSlot(timeValue));
         }
         List<String> booked_time = new ArrayList<>();
-        db.collection("booking").document(date)
-                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Map<String, Object> data = document.getData();
-                                if (data != null) {
-                                    for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                        String time = entry.getKey();
-                                        Map<String, Object> nestedData = (Map<String, Object>) entry.getValue();
-                                        String room_db = (String) nestedData.get("room");
-                                        if (room.contains(room_db)) booked_time.add(time);
+        db.collection("bookings").whereEqualTo("room", room)
+                .whereEqualTo("date", date)
+                .get() .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (task.getResult().isEmpty()) {
 
-                                    }
-                                }
-                                Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
 
-                                timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                                recyclerView = binding.timeRecycler;
-                                recyclerView.setLayoutManager(layoutManager);
-                                recyclerView.setAdapter(timeAdapter);
-                            } else {
-                                Toast.makeText(getContext(), "2", Toast.LENGTH_SHORT).show();
+                        timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
+                        recyclerView = binding.timeRecycler;
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(timeAdapter);
+                        } else {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String time_db = (String) document.get("time");
+                                booked_time.add(time_db);
 
-                                timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                                recyclerView = binding.timeRecycler;
-                                recyclerView.setLayoutManager(layoutManager);
-                                recyclerView.setAdapter(timeAdapter);
                             }
+                            Toast.makeText(getContext(), booked_time.toString(), Toast.LENGTH_SHORT).show();
+
+                            timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
+                            recyclerView = binding.timeRecycler;
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(timeAdapter);
                         }
                     }
-                }).addOnFailureListener(e -> {
-                    Toast.makeText(getContext(), "Ошибка получения данных.", Toast.LENGTH_SHORT).show();
                 });
+
 
 
         binding.bookingButton.setOnClickListener(new View.OnClickListener() {
@@ -125,41 +118,37 @@ public class TimeFragment extends Fragment {
 
                 }
 
-                Map<String, Object> map = new HashMap<>();
-                Map<String, Object> data = new HashMap<>();
-                data.put("uid", auth.getCurrentUser().getUid());
-                data.put("room", room);
-                data.put("purpose", issue);
-                map.put(time, data);
-                Toast.makeText(getContext(), time, Toast.LENGTH_SHORT).show();
 
-                db.collection("booking").
-                        document(date).
-                        set(map, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Map<String, Object> bookings = new HashMap<>();
-                                data.put("date", date);
-                                data.put("time", time);
-                                data.put("room", room);
-                                data.put("purpose", issue);
+                String bookingId = db.collection("bookings").document().getId();
 
-                                db.collection("users").document(auth.getCurrentUser().getUid()).update("bookings", FieldValue.arrayUnion(bookings)).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                Map<String, Object> newBooking = new HashMap<>();
+                newBooking.put("uid", auth.getCurrentUser().getUid());
+                newBooking.put("room", room);
+                newBooking.put("date", date);
+                newBooking.put("time", time);
 
-                                    }
-                                });
-                                Toast.makeText(getContext(), "Помещение забронировано.", Toast.LENGTH_SHORT).show();
+                db.collection("bookings").document(bookingId)
+                        .set(newBooking)
+                        .addOnSuccessListener(aVoid -> {
+                            Map<String, Object> bookings = new HashMap<>();
+                            bookings.put("date", date);
+                            bookings.put("time", time);
+                            bookings.put("room", room);
+                            bookings.put("purpose", issue);
 
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getContext(), "Попробуйте еще раз.", Toast.LENGTH_SHORT).show();
+                            db.collection("users").document(auth.getCurrentUser().getUid()).update("bookings", FieldValue.arrayUnion(bookings)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
 
-                            }
+                                }
+                            });
+                            Toast.makeText(getContext(), "Помещение забронировано!", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(getContext(), "Что-то пошло не так.", Toast.LENGTH_SHORT).show();
+
                         });
+                Toast.makeText(getContext(), time, Toast.LENGTH_SHORT).show();
 
 
             }

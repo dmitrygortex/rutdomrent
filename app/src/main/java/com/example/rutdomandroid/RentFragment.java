@@ -87,7 +87,17 @@ public class RentFragment extends Fragment {
         });
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         date = formatter.format(binding.calendarView.getDate());
-
+        binding.booked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout, new CancelationFragment())
+                        .setReorderingAllowed(false)
+                        .addToBackStack("name")
+                        .commit();
+            }
+        });
         binding.calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {

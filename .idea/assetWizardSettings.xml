@@ -292,7 +292,11 @@
           </value>
         </entry>
 =======
+<<<<<<< HEAD
 >>>>>>> a695cf414b4256739e607c5834707ba5260482fa
+=======
+>>>>>>> feature/DimaGosha3
+>>>>>>> f97bf3457e2f129990f1d16678aaa5f5a21ddd3a
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -305,12 +309,21 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <entry key="outputName" value="back_button" />
                             <entry key="sourceFile" value="C:\Users\Public\Union.svg" />
 =======
                             <entry key="outputName" value="logorut3noback" />
                             <entry key="sourceFile" value="D:\programing\@PET PROJECT\@ RUT PROJ MESJAC DOM MOLODEJI\pics\svg\LOGO\logorut3.svg" />
 >>>>>>> a695cf414b4256739e607c5834707ba5260482fa
+=======
+                            <entry key="outputName" value="lineqwd" />
+                            <entry key="sourceFile" value="C:\Android\Line.svg" />
+=======
+                            <entry key="outputName" value="logorut3noback" />
+                            <entry key="sourceFile" value="D:\programing\@PET PROJECT\@ RUT PROJ MESJAC DOM MOLODEJI\pics\svg\LOGO\logorut3.svg" />
+>>>>>>> feature/DimaGosha3
+>>>>>>> f97bf3457e2f129990f1d16678aaa5f5a21ddd3a
                           </map>
                         </option>
                       </PersistentState>
