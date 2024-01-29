@@ -4,27 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="40dp"
+        android:id="@+id/my_rent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Мои бронирования"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/white"
+        android:background="@color/darkblue"
+        android:textSize="15sp"></TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rent_inits_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/booking_button"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_rent"
          />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/booking_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/horizontal_margin"
-
-        android:background="@drawable/blue_shape"
-        android:elevation="4dp"
-        android:fontFamily="@font/inter_bold"
-        android:padding="16dp"
-        android:text="Забронировать"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
 </androidx.constraintlayout.widget.ConstraintLayout>
