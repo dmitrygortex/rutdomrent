@@ -3,6 +3,7 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+<<<<<<< HEAD
         <entry key="imageWizard">
           <value>
             <PersistentState>
@@ -290,6 +291,8 @@
             </PersistentState>
           </value>
         </entry>
+=======
+>>>>>>> a695cf414b4256739e607c5834707ba5260482fa
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -301,8 +304,13 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
+<<<<<<< HEAD
                             <entry key="outputName" value="back_button" />
                             <entry key="sourceFile" value="C:\Users\Public\Union.svg" />
+=======
+                            <entry key="outputName" value="logorut3noback" />
+                            <entry key="sourceFile" value="D:\programing\@PET PROJECT\@ RUT PROJ MESJAC DOM MOLODEJI\pics\svg\LOGO\logorut3.svg" />
+>>>>>>> a695cf414b4256739e607c5834707ba5260482fa
                           </map>
                         </option>
                       </PersistentState>

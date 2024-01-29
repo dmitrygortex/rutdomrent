@@ -75,7 +75,6 @@ public class LoginFragment extends Fragment {
                 }
                 if (password.length() < 8) {
                     Toast.makeText(getContext(), "Минимальная длина пароля 8 символов", Toast.LENGTH_SHORT).show();
-
                     return;
                 }
                 if (password.isEmpty()) {
