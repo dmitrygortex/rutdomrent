@@ -3,6 +3,7 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+<<<<<<< HEAD
         <entry key="imageWizard">
           <value>
             <PersistentState>
@@ -290,6 +291,8 @@
             </PersistentState>
           </value>
         </entry>
+=======
+>>>>>>> feature/DimaGosha3
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -301,8 +304,13 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
+<<<<<<< HEAD
                             <entry key="outputName" value="lineqwd" />
                             <entry key="sourceFile" value="C:\Android\Line.svg" />
+=======
+                            <entry key="outputName" value="logorut3noback" />
+                            <entry key="sourceFile" value="D:\programing\@PET PROJECT\@ RUT PROJ MESJAC DOM MOLODEJI\pics\svg\LOGO\logorut3.svg" />
+>>>>>>> feature/DimaGosha3
                           </map>
                         </option>
                       </PersistentState>

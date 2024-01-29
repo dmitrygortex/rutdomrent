@@ -73,7 +73,7 @@
 
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
-                android:hint="Логин"
+                android:hint="Почта"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textColorHint="@color/black"
