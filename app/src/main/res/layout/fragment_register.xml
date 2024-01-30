@@ -110,7 +110,7 @@
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
-                android:hint="Институт"
+                android:hint="Группа"
 
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
