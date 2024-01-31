@@ -94,7 +94,7 @@ public class LoginFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if (auth.getCurrentUser() != null) {
+                                if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Вы вошли в аккаунт.",
                                             Toast.LENGTH_SHORT).show();
                                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

@@ -27,7 +27,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RegisterFragment extends Fragment {
@@ -39,6 +41,10 @@ public class RegisterFragment extends Fragment {
 
     Button loginButton;
 
+    private static Boolean isInstituteValid(String group){
+        List<String> groupList = Arrays.asList("ИУЦТ ИЭФ ИТТСУ ИПСС ИМТК ЮИ АВТ ВИШ АДХ АГА".split(" "));
+        return groupList.contains(group);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +90,10 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(getContext(), "Поле Институт должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (!isInstituteValid(institute)){
+                    Toast.makeText(getContext(), "Введен несуществующий институт", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (name.isEmpty()) {
                     Toast.makeText(getContext(), "Поле ФИО должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
@@ -97,10 +107,11 @@ public class RegisterFragment extends Fragment {
                                     String uid = user.getUid();
 
                                     Map<String, Object> userMap = new HashMap<>();
-                                    userMap.put("email", email);
-                                    userMap.put("password", password);
+                                    userMap.put("Почта", email);
+                                    userMap.put("Пароль", password);
                                     userMap.put("ФИО", name);
                                     userMap.put("Институт", institute);
+
 
                                     userMap.put("uid", uid);
 

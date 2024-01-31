@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rutdomandroid.model.TimeSlot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
