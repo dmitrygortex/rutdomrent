@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,10 @@ import android.widget.Toast;
 
 import com.example.rutdomandroid.databinding.RentTimeBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
@@ -31,13 +27,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class TimeFragment extends Fragment {
     RentTimeBinding binding;
     Bundle bundle;
     FirebaseAuth auth;
     FirebaseFirestore db;
-    String data, room, issue, time, date;
+    String data, room, purpose, time, date;
     String[] values;
 
     RecyclerView recyclerView;
@@ -57,7 +54,7 @@ public class TimeFragment extends Fragment {
             values = data.split("_");
             date = values[0];
             room = values[1];
-            issue = values[2];
+            purpose = values[2];
 
         }
 
@@ -71,23 +68,23 @@ public class TimeFragment extends Fragment {
             timeSlots.add(new TimeSlot(timeValue));
         }
         List<String> booked_time = new ArrayList<>();
-        db.collection("bookings").whereEqualTo("room", room)
-                .whereEqualTo("date", date)
-                .get() .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        if (task.getResult().isEmpty()) {
+        db.collection(room).document(date).get()
+               .addOnCompleteListener(document -> {
+                    if (document.isSuccessful()) {
+                        if (document.getResult()== null) {
 
-                        Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
 
                         timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
                         recyclerView = binding.timeRecycler;
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setAdapter(timeAdapter);
                         } else {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String time_db = (String) document.get("time");
-                                booked_time.add(time_db);
-
+                            Map<String, Object> data = document.getResult().getData();
+                            if (data != null) {
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    String timeFromDb = entry.getKey();
+                                    booked_time.add(timeFromDb);
+                                }
                             }
                             Toast.makeText(getContext(), booked_time.toString(), Toast.LENGTH_SHORT).show();
 
@@ -119,22 +116,22 @@ public class TimeFragment extends Fragment {
                 }
 
 
-                String bookingId = db.collection("bookings").document().getId();
+                Map<String, Object> time_map = new HashMap<>();
 
                 Map<String, Object> newBooking = new HashMap<>();
                 newBooking.put("uid", auth.getCurrentUser().getUid());
-                newBooking.put("room", room);
-                newBooking.put("date", date);
-                newBooking.put("time", time);
+                newBooking.put("purpose", purpose);
+                time_map.put(time,newBooking);
 
-                db.collection("bookings").document(bookingId)
-                        .set(newBooking)
+
+                db.collection(room).document(date)
+                        .set(time_map, SetOptions.merge())
                         .addOnSuccessListener(aVoid -> {
                             Map<String, Object> bookings = new HashMap<>();
                             bookings.put("date", date);
                             bookings.put("time", time);
                             bookings.put("room", room);
-                            bookings.put("purpose", issue);
+                            bookings.put("purpose", purpose);
 
                             db.collection("users").document(auth.getCurrentUser().getUid()).update("bookings", FieldValue.arrayUnion(bookings)).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

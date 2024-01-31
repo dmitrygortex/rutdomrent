@@ -33,7 +33,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 public class LoginFragment extends Fragment {
     FragmentLoginBinding binding;
     FirebaseAuth auth;
-    TextView registerlabel;
+    TextView registerLabel;
     Button loginButton;
     EditText email_text,password_text;
     String email,password;
@@ -52,11 +52,11 @@ public class LoginFragment extends Fragment {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         auth = FirebaseAuth.getInstance();
-        registerlabel=(TextView) binding.createAccoutLabel;
+        registerLabel=(TextView) binding.createAccoutLabel;
         loginButton=  binding.loginButton;
         email_text=binding.emailSignIn;
         password_text=binding.passwordSignIn;
-        registerlabel.setOnClickListener(new View.OnClickListener() {
+        registerLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

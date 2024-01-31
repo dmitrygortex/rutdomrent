@@ -115,29 +115,41 @@ public class ProfileFragment extends Fragment {
                 data.put("ФИО", fio);
                 db.collection("users").document(user.getUid())
                         .update(data);
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                AuthCredential credential = EmailAuthProvider
+                        .getCredential(email_first, password_first);
 
-                AuthCredential credential = EmailAuthProvider.getCredential(email_first, password_first); // Current Login Credentials
-
-                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        Log.d("value", "User re-authenticated.");
-
-                        // Now change your email address \\
-                        //----------------Code for Changing Email Address----------\\
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                user.reauthenticate(credential)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Email Changed"  ,Toast.LENGTH_SHORT).show();
+                                    user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "Password updated");
+                                            } else {
+                                                Log.d(TAG, "Error password not updated");
+                                            }
+                                        }
+                                    });
+                                    user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "Password updated");
+                                            } else {
+                                                Log.d(TAG, "Error password not updated");
+                                            }
+                                        }
+                                    });
+                                    Toast.makeText(getContext(), "Профиль обновлен.", Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    Log.d(TAG, "Error auth failed");
                                 }
                             }
                         });
-                    }
-                });
 
 
 
@@ -177,8 +189,8 @@ public class ProfileFragment extends Fragment {
                 alert.show();
             }
         });
-        Button deleteaccount = binding.deleteAccount;
-        deleteaccount.setOnClickListener(new View.OnClickListener() {
+        Button deleteАccount = binding.deleteAccount;
+        deleteАccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

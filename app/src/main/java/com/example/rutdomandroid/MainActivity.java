@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new InfoFragment());
+        replaceFragment(new LoginFragment());
         binding.buttonNavView.setVisibility(View.GONE);
 
         binding.buttonNavView.setOnItemSelectedListener(item -> {

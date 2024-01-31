@@ -33,6 +33,8 @@ import java.util.Map;
 public class RegisterFragment extends Fragment {
     FragmentRegisterBinding binding;
     FirebaseAuth mAuth;
+    TextView loginLabel;
+
     FirebaseFirestore db;
 
     Button loginButton;
@@ -43,9 +45,20 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        loginButton = binding.button;
+        loginButton = binding.registerButton;
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        loginLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout, new LoginFragment(), null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("name")
+                        .commit();
+            }
+        });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
