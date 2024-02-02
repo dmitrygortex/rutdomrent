@@ -104,7 +104,7 @@ public class LoginFragment extends Fragment {
                                             .addToBackStack("name")
                                             .commit();
                                 }
-                                else Toast.makeText(getContext(), "Аккаунт не существует.",
+                                else Toast.makeText(getContext(), "Почта или пароль неверны.",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {

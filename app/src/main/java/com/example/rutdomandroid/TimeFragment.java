@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.rutdomandroid.adapter.TimeAdapter;
 import com.example.rutdomandroid.databinding.RentTimeBinding;
 import com.example.rutdomandroid.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;

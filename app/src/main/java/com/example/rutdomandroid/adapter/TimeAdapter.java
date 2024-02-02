@@ -1,4 +1,4 @@
-package com.example.rutdomandroid;
+package com.example.rutdomandroid.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rutdomandroid.R;
 import com.example.rutdomandroid.model.TimeSlot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -18,7 +19,6 @@ import java.util.List;
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder> {
     private boolean isClickable;
     private List<TimeSlot> timeSlots;
-    private int clicked;
     private LayoutInflater layoutInflater;
     FirebaseFirestore db;
     private List<String> booked_values;
@@ -38,9 +38,6 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
         this.isClickable = !isClickable;
     }
 
-    public TimeSlot getItem(int position) {
-        return timeSlots.get(position);
-    }
 
     public List<TimeSlot> getTimeSlots() {
         return timeSlots;

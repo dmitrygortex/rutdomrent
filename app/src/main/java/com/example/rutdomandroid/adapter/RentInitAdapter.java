@@ -14,12 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rutdomandroid.R;
 import com.example.rutdomandroid.model.RentInit;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirestoreRegistrar;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firestore.v1.WriteResult;
 
 import java.util.HashMap;
@@ -101,22 +105,21 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
         holder.cancelRent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int actualPosition = holder.getAdapterPosition();
+                int position = holder.getAdapterPosition();
                 RentInit rent = rentInits.get(position);
-                actualPosition = holder.getAdapterPosition();
-                rentInits.remove(actualPosition);
+                rentInits.remove(position);
                 String date = (String) rent.getDate();
                 String time = (String) rent.getTime();
                 String room = (String) rent.getRoom();
-                db.collection("users").document(user.getUid()).update("bookings", rentInits)
-                        ;
+                db.collection("users").document(user.getUid()).update("bookings", rentInits);
+                Map<String, Object> data = new HashMap<>();
+                data.put(time,FieldValue.delete());
+                Map<String, Object> updates = new HashMap<>();
+                updates.put(rent.getTime(), FieldValue.delete());
 
-                db.collection(room).document(date).update(rent.getTime(), FieldValue.delete());
-
-
-
-                notifyItemRemoved(actualPosition);
-                notifyItemRangeChanged(actualPosition, rentInits.size());
+                db.collection(room).document(date).set(updates, SetOptions.merge());
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, rentInits.size());
             }
         });
     }
