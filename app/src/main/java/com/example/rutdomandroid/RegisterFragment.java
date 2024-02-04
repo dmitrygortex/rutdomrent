@@ -62,8 +62,8 @@ public class RegisterFragment extends Fragment {
 
         //goToSetting();
 
-        NotificationHelper.createChannel(this.getContext());
-        NotificationHelper.sendNotification(this.getContext(), "AFTER 2 DAYS I DO IT!!!!!", "LESSGOO");
+        //NotificationHelper.createChannel(this.getContext());
+        //NotificationHelper.sendNotification(this.getContext(), "AFTER 2 DAYS I DO IT!!!!!", "LESSGOO");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
