@@ -1,12 +1,21 @@
 package com.example.rutdomandroid;
 
+import static java.security.AccessController.getContext;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -25,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new LoginFragment());
         binding.buttonNavView.setVisibility(View.GONE);
 
+
+
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if  (item.getItemId()==R.id.info_item) {
                  replaceFragment(new InfoFragment());
@@ -35,7 +46,15 @@ public class MainActivity extends AppCompatActivity {
             if  (item.getItemId()==R.id.rent_item) {
                 replaceFragment(new RentFragment());
             }
+
+
+
+
             return true;
+
+
+
+
         });
 
     }
