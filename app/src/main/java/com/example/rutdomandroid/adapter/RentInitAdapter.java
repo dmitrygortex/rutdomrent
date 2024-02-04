@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rutdomandroid.MainActivity;
 import com.example.rutdomandroid.R;
-import com.example.rutdomandroid.database.RentDatabase;
-import com.example.rutdomandroid.database.RentEntity;
-import com.example.rutdomandroid.database.RentDAO;
+import com.example.rutdomandroid.roomDatabase.RentDatabase;
+import com.example.rutdomandroid.roomDatabase.RentEntity;
+import com.example.rutdomandroid.roomDatabase.RentDAO;
 import com.example.rutdomandroid.model.RentInit;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

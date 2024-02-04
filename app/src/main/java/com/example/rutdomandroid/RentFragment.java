@@ -1,9 +1,16 @@
 package com.example.rutdomandroid;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+import static java.security.AccessController.getContext;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
@@ -75,6 +82,7 @@ public class RentFragment extends Fragment {
 
                 TimeFragment fragment = new TimeFragment();
                 fragment.setArguments(bundle);
+
 
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()

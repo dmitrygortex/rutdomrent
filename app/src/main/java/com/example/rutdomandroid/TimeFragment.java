@@ -4,38 +4,43 @@ package com.example.rutdomandroid;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
+import static android.content.Context.ALARM_SERVICE;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.rutdomandroid.database.RentEntity;
-import com.example.rutdomandroid.database.RentDatabase;
-import com.example.rutdomandroid.database.RentDAO;
+import com.example.rutdomandroid.roomDatabase.RentEntity;
+import com.example.rutdomandroid.roomDatabase.RentDatabase;
+import com.example.rutdomandroid.roomDatabase.RentDAO;
 import com.example.rutdomandroid.adapter.TimeAdapter;
 import com.example.rutdomandroid.databinding.RentTimeBinding;
 import com.example.rutdomandroid.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +56,13 @@ public class TimeFragment extends Fragment {
 
     RecyclerView recyclerView;
     TimeAdapter timeAdapter;
+    Button bookingButton;
+
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent2;
+
+    long selectedTime;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +81,14 @@ public class TimeFragment extends Fragment {
             purpose = values[2];
 
         }
+/*
+
+        Button bookingButton = binding.bookingButton;
+// Сюда нужно добавить функцию которая берет выбранное время и вставляет + обработать фором при выборе нескольких времен
+        long date = System.currentTimeMillis();
+        selectedTime = date;
+        setAlarm(selectedTime);
+*/
 
         Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 
@@ -81,15 +101,15 @@ public class TimeFragment extends Fragment {
         }
         List<String> booked_time = new ArrayList<>();
         db.collection(room).document(date).get()
-               .addOnCompleteListener(document -> {
+                .addOnCompleteListener(document -> {
                     if (document.isSuccessful()) {
-                        if (document.getResult()== null) {
+                        if (document.getResult() == null) {
 
 
-                        timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                        recyclerView = binding.timeRecycler;
-                        recyclerView.setLayoutManager(layoutManager);
-                        recyclerView.setAdapter(timeAdapter);
+                            timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
+                            recyclerView = binding.timeRecycler;
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(timeAdapter);
                         } else {
                             Map<String, Object> data = document.getResult().getData();
                             if (data != null) {
@@ -109,7 +129,6 @@ public class TimeFragment extends Fragment {
                 });
 
 
-
         binding.bookingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +137,19 @@ public class TimeFragment extends Fragment {
 
                     if (timeSlot.isSelected()) {
                         time = timeSlot.getTime();
-                        timeSlot.setSelected();
+                        String hour=time.substring(0,1);
+                        String currentDate=String.format("%s %s:00:00",date,hour);
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+                        Date date = null;
+                        try {
+                            date = sdf.parse(currentDate);
+                            long millis = date.getTime();
+                            setAlarm(millis);
+
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+
                         break;
                     }
                 }
@@ -134,7 +165,7 @@ public class TimeFragment extends Fragment {
                 Map<String, Object> newBooking = new HashMap<>();
                 newBooking.put("uid", auth.getCurrentUser().getUid());
                 newBooking.put("purpose", purpose);
-                time_map.put(time,newBooking);
+                time_map.put(time, newBooking);
 
 
                 db.collection(room).document(date)
@@ -154,7 +185,7 @@ public class TimeFragment extends Fragment {
                                         @Override
                                         public void run() {
                                             RentDAO rentDAO = rentDatabase.bookingDao();
-                                            RentEntity existingBooking = rentDAO.getBooking(date, room,time,auth.getUid());
+                                            RentEntity existingBooking = rentDAO.getBooking(date, room, time, auth.getUid());
 
                                             if (existingBooking != null) {
                                                 getActivity().runOnUiThread(new Runnable() {
@@ -203,5 +234,24 @@ public class TimeFragment extends Fragment {
         return view;
     }
 
+    private void setAlarm(long selectedTime) {
+        alarmManager = (AlarmManager) this.getContext().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this.getContext(), AlarmReceiver.class);
+        pendingIntent2 = PendingIntent.getBroadcast(this.getContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, selectedTime - AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_DAY, pendingIntent2);
+        Toast.makeText(getContext(), "Напоминание запущено", Toast.LENGTH_LONG).show();
+
+    }
+
+    private void cancelAlarm() {
+        Intent intent = new Intent(getContext(), AlarmReceiver.class);
+        pendingIntent2 = PendingIntent.getBroadcast(getContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        if (alarmManager == null) {
+            alarmManager = (AlarmManager) this.getContext().getSystemService(ALARM_SERVICE);
+        }
+        alarmManager.cancel(pendingIntent2);
+        Toast.makeText(getContext(), "Напоминание закрыто", Toast.LENGTH_LONG).show();
+
+    }
 
 }

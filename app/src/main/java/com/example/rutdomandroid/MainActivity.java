@@ -9,7 +9,7 @@ import androidx.room.Room;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.rutdomandroid.database.RentDatabase;
+import com.example.rutdomandroid.roomDatabase.RentDatabase;
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         rentDatabase = Room.databaseBuilder(getApplicationContext(), RentDatabase.class, "bookings")
                 .fallbackToDestructiveMigration()
                 .build();
+
+
+
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if  (item.getItemId()==R.id.info_item) {
                  replaceFragment(new InfoFragment());
@@ -35,7 +38,15 @@ public class MainActivity extends AppCompatActivity {
             if  (item.getItemId()==R.id.rent_item) {
                 replaceFragment(new RentFragment());
             }
+
+
+
+
             return true;
+
+
+
+
         });
 
     }

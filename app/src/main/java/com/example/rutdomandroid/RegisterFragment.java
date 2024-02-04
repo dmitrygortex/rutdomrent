@@ -1,11 +1,19 @@
 package com.example.rutdomandroid;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +53,6 @@ public class RegisterFragment extends Fragment {
         List<String> groupList = Arrays.asList("ИУЦТ ИЭФ ИТТСУ ИПСС ИМТК ЮИ АВТ ВИШ АДХ АГА IUCT".split(" "));
         return groupList.contains(group);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +73,11 @@ public class RegisterFragment extends Fragment {
                         .commit();
             }
         });
+
+        //goToSetting();
+
+        //NotificationHelper.createChannel(this.getContext());
+        //NotificationHelper.sendNotification(this.getContext(), "AFTER 2 DAYS I DO IT!!!!!", "LESSGOO");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
