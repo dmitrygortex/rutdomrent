@@ -18,6 +18,9 @@ import android.widget.Toast;
 import com.example.rutdomandroid.adapter.RentInitAdapter;
 import com.example.rutdomandroid.databinding.FragmentCancelationBinding;
 import com.example.rutdomandroid.model.RentInit;
+import com.example.rutdomandroid.roomDatabase.RentDAO;
+import com.example.rutdomandroid.roomDatabase.RentDatabase;
+import com.example.rutdomandroid.roomDatabase.RentEntity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 public class CancelationFragment extends Fragment {
     FragmentCancelationBinding binding;
@@ -47,41 +51,35 @@ public class CancelationFragment extends Fragment {
         binding = FragmentCancelationBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
-        DocumentReference userRef = db.collection("users").document(auth.getCurrentUser().getUid());
-        userRef.get().addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        List<Map<String, String>> bookingsData = (List<Map<String, String>>) documentSnapshot.get("bookings");
-                        if (bookingsData != null) {
-                            for (Map<String, String> rent : bookingsData) {
-                                String room = rent.get("room");
-                                String purpose = rent.get("purpose");
-                                String date = rent.get("date");
-                                String time = rent.get("time");
-                                String year = date.split("\\.")[2];
-                                Toast.makeText(getContext(), String.format("%s %s %s %s", room, date, time, purpose), Toast.LENGTH_SHORT).show();
-                                RentInit rentInit = new RentInit(user.getUid(), year, date, time, room, purpose);
-                                bookings.add(rentInit);
-                            }
-                            RentInitAdapter bookingAdapter = new RentInitAdapter(inflater.getContext(),bookings);
-                            recyclerView = binding.rentInitsRecycler;
-                            recyclerView.setLayoutManager(layoutManager);
-                            recyclerView.setAdapter(bookingAdapter);
-                        }
-                        else{
-                            RentInitAdapter bookingAdapter = new RentInitAdapter(inflater.getContext(),bookings);
-                            recyclerView = binding.rentInitsRecycler;
-                            recyclerView.setLayoutManager(layoutManager);
-                            recyclerView.setAdapter(bookingAdapter);
-                        }
+        RentDatabase rentDatabase = MainActivity.getRentDatabase();
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                RentDAO rentDAO = rentDatabase.bookingDao();
+                List<RentEntity> rentEntities = rentDAO.getAllBookings(auth.getUid());
+                if (!rentEntities.isEmpty()) {
+                    for (RentEntity rent : rentEntities) {
+                        String room = rent.getRoom();
+                        String purpose = rent.getPurpose();
+                        String date = rent.getDate();
+                        String time = rent.getTime();
+                        String year = date.split("\\.")[2];
+                        //Toast.makeText(getContext(), String.format("%s %s %s %s", room, date, time, purpose), Toast.LENGTH_SHORT).show();
+                        RentInit rentInit = new RentInit(user.getUid(), year, date, time, room, purpose);
+                        bookings.add(rentInit);
                     }
-                });
-
-
-
-
-
-
-
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            RentInitAdapter bookingAdapter = new RentInitAdapter(inflater.getContext(), bookings);
+                            recyclerView = binding.rentInitsRecycler;
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(bookingAdapter);
+                        }
+                    });
+                }
+            }
+        });
         return view;
     }
 }

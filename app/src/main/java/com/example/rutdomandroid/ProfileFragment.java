@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.rutdomandroid.databinding.FragmentProfileBinding;
+import com.example.rutdomandroid.roomDatabase.RentDatabase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 
 public class ProfileFragment extends Fragment {
@@ -54,7 +56,7 @@ public class ProfileFragment extends Fragment {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                email_first=document.getString("ПОЧТ===");
+                                email_first=document.getString("email");
                                 password_first=document.getString("password");
 
                                 binding.editTextText2.setText(document.getString("email"));
@@ -193,7 +195,11 @@ public class ProfileFragment extends Fragment {
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                RentDatabase rentDatabase=MainActivity.getRentDatabase();
+                                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                                    @Override    public void run() {
+                                        rentDatabase.bookingDao().deleteBooking(user.getUid());
+                                    }});
                                 db.collection("users").document(auth.getCurrentUser().getUid()).delete();
 
                                 auth.getCurrentUser().delete()

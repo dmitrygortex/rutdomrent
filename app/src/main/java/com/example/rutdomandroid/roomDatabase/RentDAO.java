@@ -17,6 +17,8 @@ public interface RentDAO {
     @Query("SELECT * FROM bookings WHERE uid = :uid")
     List<RentEntity> getAllBookings(String uid);
 
+    @Query("DELETE FROM bookings WHERE uid = :uid")
+    public void deleteBooking(String uid);
 
 
 
