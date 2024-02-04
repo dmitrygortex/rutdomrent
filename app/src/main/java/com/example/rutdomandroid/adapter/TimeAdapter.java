@@ -57,8 +57,8 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
             holder.layout.setBackground(
                     ContextCompat.getDrawable(layoutInflater.getContext(), R.drawable.button_gray_shape));
             holder.timeText.setTextColor(ContextCompat.getColor(layoutInflater.getContext(), R.color.grey));
-            value.setEnable();
-        }
+            value.setEnable(false);
+        } else value.setEnable(true);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

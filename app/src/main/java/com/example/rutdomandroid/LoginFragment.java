@@ -93,16 +93,16 @@ public class LoginFragment extends Fragment {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getContext(), "Вы вошли в аккаунт.",
+                                                Toast.LENGTH_SHORT).show();
+                                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                                        fragmentManager.beginTransaction()
+                                                .replace(R.id.frame_layout, new InfoFragment(), null)
+                                                .setReorderingAllowed(true)
+                                                .addToBackStack("name")
+                                                .commit();
 
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Вы вошли в аккаунт.",
-                                            Toast.LENGTH_SHORT).show();
-                                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                                    fragmentManager.beginTransaction()
-                                            .replace(R.id.frame_layout, new InfoFragment(), null)
-                                            .setReorderingAllowed(true)
-                                            .addToBackStack("name")
-                                            .commit();
                                 }
                                 else Toast.makeText(getContext(), "Почта или пароль неверны.",
                                         Toast.LENGTH_SHORT).show();

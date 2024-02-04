@@ -3,7 +3,6 @@ package com.example.rutdomandroid;
 import static android.content.ContentValues.TAG;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -11,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.rutdomandroid.databinding.ActivityMainBinding;
-import com.example.rutdomandroid.databinding.FragmentLoginBinding;
 import com.example.rutdomandroid.databinding.FragmentProfileBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -60,7 +54,7 @@ public class ProfileFragment extends Fragment {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                email_first=document.getString("email");
+                                email_first=document.getString("ПОЧТ===");
                                 password_first=document.getString("password");
 
                                 binding.editTextText2.setText(document.getString("email"));
@@ -165,7 +159,7 @@ public class ProfileFragment extends Fragment {
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                auth.signOut();
+                                FirebaseAuth.getInstance().signOut();
                                 MainActivity mainActivity = (MainActivity) requireActivity();
                                 if (mainActivity != null) {
                                     mainActivity.setButtonNavViewVisibility(View.GONE);
@@ -199,6 +193,7 @@ public class ProfileFragment extends Fragment {
                         .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
                                 db.collection("users").document(auth.getCurrentUser().getUid()).delete();
 
                                 auth.getCurrentUser().delete()

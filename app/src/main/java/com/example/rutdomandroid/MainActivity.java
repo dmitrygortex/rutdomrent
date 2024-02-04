@@ -1,21 +1,19 @@
 package com.example.rutdomandroid;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.rutdomandroid.database.RentDatabase;
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
+    private static RentDatabase rentDatabase;
     ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new InfoFragment());
         binding.buttonNavView.setVisibility(View.GONE);
-
+        rentDatabase = Room.databaseBuilder(getApplicationContext(), RentDatabase.class, "bookings")
+                .fallbackToDestructiveMigration()
+                .build();
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if  (item.getItemId()==R.id.info_item) {
                  replaceFragment(new InfoFragment());
@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setButtonNavViewVisibility(int visibility) {
         binding.buttonNavView.setVisibility(visibility);
+    }
+    public static RentDatabase getRentDatabase() {
+        return rentDatabase;
     }
 }
 

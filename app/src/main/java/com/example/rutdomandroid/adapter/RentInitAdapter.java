@@ -6,29 +6,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rutdomandroid.MainActivity;
 import com.example.rutdomandroid.R;
+import com.example.rutdomandroid.database.RentDatabase;
+import com.example.rutdomandroid.database.RentEntity;
+import com.example.rutdomandroid.database.RentDAO;
 import com.example.rutdomandroid.model.RentInit;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirestoreRegistrar;
 import com.google.firebase.firestore.SetOptions;
-import com.google.firestore.v1.WriteResult;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentInitViewHolder> {
 
@@ -110,6 +107,7 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
                 rentInits.remove(position);
                 String date = (String) rent.getDate();
                 String time = (String) rent.getTime();
+                String purpose=rent.getReasonOfRent();
                 String room = (String) rent.getRoom();
                 db.collection("users").document(user.getUid()).update("bookings", rentInits);
                 Map<String, Object> data = new HashMap<>();
@@ -118,10 +116,24 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
                 updates.put(rent.getTime(), FieldValue.delete());
 
                 db.collection(room).document(date).set(updates, SetOptions.merge());
+              cancelRent(date,room,time,user.getUid());
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, rentInits.size());
             }
         });
+    }
+    public void cancelRent(String date, String room, String time, String uid){
+        RentDatabase rentDatabase = MainActivity.getRentDatabase();
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                RentDAO rentDAO = rentDatabase.bookingDao();
+
+                RentEntity rentEntity= rentDAO.getBooking(date,room,time,uid);
+                if (rentEntity!=null) rentDAO.deleteRent(rentEntity);
+            }
+        });
+
     }
 
 

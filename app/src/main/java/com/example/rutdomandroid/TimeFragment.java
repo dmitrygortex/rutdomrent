@@ -4,24 +4,34 @@ package com.example.rutdomandroid;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.rutdomandroid.database.RentEntity;
+import com.example.rutdomandroid.database.RentDatabase;
+import com.example.rutdomandroid.database.RentDAO;
 import com.example.rutdomandroid.adapter.TimeAdapter;
 import com.example.rutdomandroid.databinding.RentTimeBinding;
 import com.example.rutdomandroid.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
@@ -29,6 +39,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 public class TimeFragment extends Fragment {
     RentTimeBinding binding;
@@ -107,6 +118,7 @@ public class TimeFragment extends Fragment {
 
                     if (timeSlot.isSelected()) {
                         time = timeSlot.getTime();
+                        timeSlot.setSelected();
                         break;
                     }
                 }
@@ -137,6 +149,32 @@ public class TimeFragment extends Fragment {
                             db.collection("users").document(auth.getCurrentUser().getUid()).update("bookings", FieldValue.arrayUnion(bookings)).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    RentDatabase rentDatabase = MainActivity.getRentDatabase();
+                                    Executors.newSingleThreadExecutor().execute(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            RentDAO rentDAO = rentDatabase.bookingDao();
+                                            RentEntity existingBooking = rentDAO.getBooking(date, room,time,auth.getUid());
+
+                                            if (existingBooking != null) {
+                                                getActivity().runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        Toast.makeText(getContext(), "Время уже забронировано", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            } else {
+                                                RentEntity rent = new RentEntity();
+                                                rent.setDate(date); // Устанавливаем дату
+                                                rent.setRoom(room); // Устанавливаем комнату
+                                                rent.setPurpose(purpose); // Устанавливаем цель
+                                                rent.setTime(time); // Устанавливаем время
+                                                rent.setUid(auth.getUid());
+                                                rentDatabase.bookingDao().createRent(rent);
+                                            }
+
+                                        }
+                                    });
 
                                 }
                             });

@@ -15,8 +15,8 @@ public class TimeSlot {
         return isEnable;
     }
 
-    public void setEnable() {
-        this.isEnable = !isEnable;
+    public void setEnable(boolean q) {
+        this.isEnable = q;
     }
 
     public String getTime() {

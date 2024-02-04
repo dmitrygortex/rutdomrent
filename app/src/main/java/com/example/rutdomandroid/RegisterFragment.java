@@ -42,7 +42,7 @@ public class RegisterFragment extends Fragment {
     Button loginButton;
 
     private static Boolean isInstituteValid(String group){
-        List<String> groupList = Arrays.asList("ИУЦТ ИЭФ ИТТСУ ИПСС ИМТК ЮИ АВТ ВИШ АДХ АГА".split(" "));
+        List<String> groupList = Arrays.asList("ИУЦТ ИЭФ ИТТСУ ИПСС ИМТК ЮИ АВТ ВИШ АДХ АГА IUCT".split(" "));
         return groupList.contains(group);
     }
 
@@ -51,6 +51,7 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        loginLabel=binding.loginLabel;
         loginButton = binding.registerButton;
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -107,8 +108,8 @@ public class RegisterFragment extends Fragment {
                                     String uid = user.getUid();
 
                                     Map<String, Object> userMap = new HashMap<>();
-                                    userMap.put("Почта", email);
-                                    userMap.put("Пароль", password);
+                                    userMap.put("email", email);
+                                    userMap.put("password", password);
                                     userMap.put("ФИО", name);
                                     userMap.put("Институт", institute);
 

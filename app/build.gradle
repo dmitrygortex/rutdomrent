@@ -37,11 +37,20 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     runtimeOnly 'com.google.android.material:material:1.11.0'
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+
     implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'com.google.firebase:firebase-firestore:23.0.1'
     implementation "io.grpc:grpc-okhttp:1.32.2"
+    runtimeOnly 'androidx.room:room-runtime:2.5.2'
+    runtimeOnly 'androidx.room:room-common:2.5.2'
+    implementation 'androidx.room:room-rxjava2:2.5.2'
+    runtimeOnly 'androidx.room:room-paging:2.5.2'
 
-
+    implementation "androidx.room:room-runtime:2.6.1"
+    annotationProcessor "androidx.room:room-compiler:2.6.1" 
+     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
