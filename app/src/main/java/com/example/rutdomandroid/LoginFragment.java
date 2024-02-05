@@ -75,6 +75,7 @@ public class LoginFragment extends Fragment {
                 String email = binding.emailSignIn.getText().toString();
                 String password = binding.passwordSignIn.getText().toString();
 
+
                 if (!isValidEmail(email)) {
                     Toast.makeText(getContext(), "Невозможная почта. Пример: example@domen.com", Toast.LENGTH_SHORT).show();
                     return;
