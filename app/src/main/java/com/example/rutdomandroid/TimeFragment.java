@@ -1,22 +1,22 @@
 package com.example.rutdomandroid;
 
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-
 import static android.content.Context.ALARM_SERVICE;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +32,13 @@ import com.example.rutdomandroid.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.text.ParseException;
@@ -81,14 +86,6 @@ public class TimeFragment extends Fragment {
             purpose = values[2];
 
         }
-/*
-
-        Button bookingButton = binding.bookingButton;
-// Сюда нужно добавить функцию которая берет выбранное время и вставляет + обработать фором при выборе нескольких времен
-        long date = System.currentTimeMillis();
-        selectedTime = date;
-        setAlarm(selectedTime);
-*/
 
         Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 
@@ -100,33 +97,42 @@ public class TimeFragment extends Fragment {
             timeSlots.add(new TimeSlot(timeValue));
         }
         List<String> booked_time = new ArrayList<>();
-        db.collection(room).document(date).get()
-                .addOnCompleteListener(document -> {
-                    if (document.isSuccessful()) {
-                        if (document.getResult() == null) {
 
+        db.collection(room).document(date).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    return;
+                }
 
-                            timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                            recyclerView = binding.timeRecycler;
-                            recyclerView.setLayoutManager(layoutManager);
-                            recyclerView.setAdapter(timeAdapter);
-                        } else {
-                            Map<String, Object> data = document.getResult().getData();
-                            if (data != null) {
-                                for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                    String timeFromDb = entry.getKey();
-                                    booked_time.add(timeFromDb);
-                                }
-                            }
-                            Toast.makeText(getContext(), booked_time.toString(), Toast.LENGTH_SHORT).show();
-
-                            timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                            recyclerView = binding.timeRecycler;
-                            recyclerView.setLayoutManager(layoutManager);
-                            recyclerView.setAdapter(timeAdapter);
+                if (snapshot != null && snapshot.exists()) {
+                    Map<String, Object> data = snapshot.getData();
+                    if (data != null) {
+                        booked_time.clear();
+                        for (Map.Entry<String, Object> entry : data.entrySet()) {
+                            String timeFromDb = entry.getKey();
+                            booked_time.add(timeFromDb);
                         }
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
+                                recyclerView = binding.timeRecycler;
+                                recyclerView.setLayoutManager(layoutManager);
+                                recyclerView.setAdapter(timeAdapter);
+                                timeAdapter.notifyDataSetChanged();
+                            }
+                        });
                     }
-                });
+                } else {
+                    timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
+                    recyclerView = binding.timeRecycler;
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(timeAdapter);
+                }
+            }
+        });
+
 
 
         binding.bookingButton.setOnClickListener(new View.OnClickListener() {
@@ -137,19 +143,7 @@ public class TimeFragment extends Fragment {
 
                     if (timeSlot.isSelected()) {
                         time = timeSlot.getTime();
-                        String hour=time.substring(0,1);
-                        String currentDate=String.format("%s %s:00:00",date,hour);
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-                        Date date = null;
-                        try {
-                            date = sdf.parse(currentDate);
-                            long millis = date.getTime();
-                            setAlarm(millis);
-
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-
+                        timeSlot.setSelected();
                         break;
                     }
                 }
