@@ -31,7 +31,7 @@
             >
 
             <TextView
-                android:id="@+id/yearOfRentInit"
+                android:id="@+id/text_rented_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -54,10 +54,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/yearOfRentInit"></TextView>
+                app:layout_constraintTop_toBottomOf="@id/text_rented_time"></TextView>
 
             <TextView
-                android:id="@+id/timeOfRentInit"
+                android:id="@+id/text_time_of_rented_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
@@ -85,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/typeOfRoom"
+                android:id="@+id/text_user_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/themeOfRent"
+                android:id="@+id/text_group"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

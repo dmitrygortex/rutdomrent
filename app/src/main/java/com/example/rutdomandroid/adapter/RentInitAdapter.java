@@ -154,11 +154,11 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
         public RentInitViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            yearOfRentInit = itemView.findViewById(R.id.yearOfRentInit);
+            yearOfRentInit = itemView.findViewById(R.id.text_rented_time);
             dateOfRentInit = itemView.findViewById(R.id.dateOfRentInit);
-            timeOfRentInit = itemView.findViewById(R.id.timeOfRentInit);
-            typeOfRoom = itemView.findViewById(R.id.typeOfRoom);
-            reasonOfRentInit = itemView.findViewById(R.id.themeOfRent);
+            timeOfRentInit = itemView.findViewById(R.id.text_time_of_rented_hours);
+            typeOfRoom = itemView.findViewById(R.id.text_user_name);
+            reasonOfRentInit = itemView.findViewById(R.id.text_group);
             cancelRent = itemView.findViewById(R.id.cancelRent);
         }
     }
