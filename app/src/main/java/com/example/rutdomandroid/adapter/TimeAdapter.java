@@ -52,40 +52,43 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
     @Override
     public void onBindViewHolder(TimeViewHolder holder, int position) {
         TimeSlot value = timeSlots.get(position);
+
         holder.timeText.setText(value.getTime());
-        if (booked_values.contains(value.getTime())) {
-            holder.layout.setBackground(
-                    ContextCompat.getDrawable(layoutInflater.getContext(), R.drawable.button_gray_shape));
+
+        if (!value.isEnable()) {
+            holder.layout.setBackground(ContextCompat.getDrawable(layoutInflater.getContext(), R.drawable.button_gray_shape));
             holder.timeText.setTextColor(ContextCompat.getColor(layoutInflater.getContext(), R.color.grey));
-            value.setEnable(false);
-        } else value.setEnable(true);
+        }
+        else{
+            if (!value.isSelected()) {
+                holder.itemView.setBackground(ContextCompat.getDrawable(layoutInflater.getContext(), R.drawable.button_green_shape));
+                holder.timeText.setTextColor(ContextCompat.getColor(layoutInflater.getContext(), R.color.green));
+            }
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (value.isEnable()) {
-                    if (value.isSelected()){
-
-                        holder.itemView.setBackground(
-                                ContextCompat.getDrawable(v.getContext(), R.drawable.button_green_shape));
+                TimeSlot clickedTimeSlot = timeSlots.get(holder.getAdapterPosition());
+                if (clickedTimeSlot.isEnable()) {
+                    if (clickedTimeSlot.isSelected()) {
+                        holder.itemView.setBackground(ContextCompat.getDrawable(v.getContext(), R.drawable.button_green_shape));
                         holder.timeText.setTextColor(ContextCompat.getColor(v.getContext(), R.color.green));
-                        value.setSelected();
+                        clickedTimeSlot.setSelected();
                         setClickable();
-                    } else if (!value.isSelected() && isClickable) {
-                        holder.itemView.setBackground(
-                                ContextCompat.getDrawable(v.getContext(), R.drawable.button_blue_shape));
+
+                    } else if (!clickedTimeSlot.isSelected() && isClickable) {
+                        holder.itemView.setBackground(ContextCompat.getDrawable(v.getContext(), R.drawable.button_blue_shape));
                         holder.timeText.setTextColor(ContextCompat.getColor(v.getContext(), R.color.blue));
-                        value.setSelected();
+                        clickedTimeSlot.setSelected();
                         setClickable();
+
                     }
                 }
-
             }
-
-
         });
-
     }
+
 
 
     @Override

@@ -41,6 +41,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -97,7 +98,10 @@ public class TimeFragment extends Fragment {
             timeSlots.add(new TimeSlot(timeValue));
         }
         List<String> booked_time = new ArrayList<>();
-
+        timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
+        recyclerView = binding.timeRecycler;
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(timeAdapter);
         db.collection(room).document(date).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
@@ -116,19 +120,15 @@ public class TimeFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                                recyclerView = binding.timeRecycler;
-                                recyclerView.setLayoutManager(layoutManager);
-                                recyclerView.setAdapter(timeAdapter);
+                                for (TimeSlot timeSlot:timeSlots){
+                                    timeSlot.setEnable(!booked_time.contains(timeSlot.getTime()));
+                                }
                                 timeAdapter.notifyDataSetChanged();
                             }
                         });
                     }
                 } else {
-                    timeAdapter = new TimeAdapter(timeSlots, inflater.getContext(), booked_time);
-                    recyclerView = binding.timeRecycler;
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(timeAdapter);
+
                 }
             }
         });
@@ -144,6 +144,7 @@ public class TimeFragment extends Fragment {
                     if (timeSlot.isSelected()) {
                         time = timeSlot.getTime();
                         timeSlot.setSelected();
+                        timeAdapter.setClickable();
                         break;
                     }
                 }
@@ -152,6 +153,20 @@ public class TimeFragment extends Fragment {
                     return;
 
                 }
+                String hour = time.substring(0, 1);
+                String currentDate = String.format("%s %s:00:00", date, hour);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+                Date dateAlarm = null;
+                try {
+                    dateAlarm = sdf.parse(currentDate);
+                    long millis = dateAlarm.getTime();
+                    setAlarm(millis);
+
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+
+
 
 
                 Map<String, Object> time_map = new HashMap<>();
@@ -233,7 +248,12 @@ public class TimeFragment extends Fragment {
         Intent intent = new Intent(this.getContext(), AlarmReceiver.class);
         pendingIntent2 = PendingIntent.getBroadcast(this.getContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, selectedTime - AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_DAY, pendingIntent2);
-        Toast.makeText(getContext(), "Напоминание запущено", Toast.LENGTH_LONG).show();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getContext(), "Напоминание запущено", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

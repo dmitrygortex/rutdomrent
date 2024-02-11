@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
 
     android:layout_height="match_parent"
     android:contentDescription="123"
@@ -113,6 +114,7 @@
             android:text="Далее"
             android:textSize="20sp"
             android:textAllCaps="false"
+            android:layout_marginTop="20dp"
 
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,14 +124,14 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/booked"
             android:layout_width="250dp"
-            android:textSize="20sp"
             android:layout_height="55dp"
             android:layout_margin="@dimen/vertical_margin"
             android:background="@drawable/button_background"
             android:fontFamily="@font/inter_bold"
             android:text="Мои Бронирования"
-            android:textColor="@color/white"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/booking_button" />

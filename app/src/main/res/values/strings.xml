@@ -3,7 +3,6 @@
         <item>Лекторий</item>
         <item>Переговорная</item>
         <item>Фотостудия</item>
-        <item>Коворкинг</item>
     </string-array>
     <string-array name="time_values">
         <item>10.00-11.00</item>
