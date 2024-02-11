@@ -2,6 +2,9 @@ package com.example.rutdomandroid;
 
 import static android.content.ContentValues.TAG;
 
+import static com.example.rutdomandroid.RegisterFragment.isGroupValid;
+import static com.example.rutdomandroid.RegisterFragment.isInstituteValid;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -61,16 +64,13 @@ public class ProfileFragment extends Fragment {
 
                                 binding.editTextText2.setText(document.getString("email"));
                                 binding.editTextText5.setText(document.getString("password"));
-                                binding.editTextText4.setText(document.getString("ФИО"));
+                                binding.editTextText4.setText(document.getString("fullName"));
 
-                                binding.editTextText3.setText(document.getString("Институт"));
+                                binding.editTextText3.setText(document.getString("institute"));
 
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                             } else {
-                                Log.d(TAG, "No such document");
                             }
                         } else {
-                            Log.d(TAG, "get failed with ", task.getException());
                         }
                     }
                 });
@@ -97,7 +97,11 @@ public class ProfileFragment extends Fragment {
                     return;
                 }
                 if (insitute.isEmpty()) {
-                    Toast.makeText(getContext(), "Поле Институт должно быть заполнено", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Поле Группа должно быть заполнено", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isInstituteValid(insitute)){
+                    Toast.makeText(getContext(), "Введен несуществующий институт", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (fio.isEmpty()) {
@@ -107,8 +111,8 @@ public class ProfileFragment extends Fragment {
                 Map<String, Object> data = new HashMap<>();
                 data.put("email", email);
                 data.put("password", password);
-                data.put("Институт", insitute);
-                data.put("ФИО", fio);
+                data.put("isnstitute", insitute);
+                data.put("fullname", fio);
                 db.collection("users").document(user.getUid())
                         .update(data);
                 AuthCredential credential = EmailAuthProvider
@@ -119,30 +123,12 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d(TAG, "Password updated");
-                                            } else {
-                                                Log.d(TAG, "Error password not updated");
-                                            }
-                                        }
-                                    });
-                                    user.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d(TAG, "Password updated");
-                                            } else {
-                                                Log.d(TAG, "Error password not updated");
-                                            }
-                                        }
-                                    });
+                                    user.updatePassword(password);
+                                    user.updateEmail(email);
                                     Toast.makeText(getContext(), "Профиль обновлен.", Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    Log.d(TAG, "Error auth failed");
+                                    Toast.makeText(getContext(), "Что-то пошло не так.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
