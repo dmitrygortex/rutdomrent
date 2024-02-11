@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Мои бронирования"
+        android:text="Админ-панель"
         android:fontFamily="@font/inter_bold"
         android:textColor="@color/white"
         android:background="@color/darkblue"

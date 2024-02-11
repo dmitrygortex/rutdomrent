@@ -162,4 +162,29 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
             cancelRent = itemView.findViewById(R.id.cancelRent);
         }
     }
+
+    public static class UserInitAdapter extends RecyclerView.Adapter<UserInitAdapter.UserInitViewHolder> {
+        @NonNull
+        @Override
+        public UserInitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull UserInitViewHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+
+        public static final class UserInitViewHolder extends RecyclerView.ViewHolder {
+
+            public UserInitViewHolder(@NonNull View itemView) {
+                super(itemView);
+            }
+        }
+    }
 }
