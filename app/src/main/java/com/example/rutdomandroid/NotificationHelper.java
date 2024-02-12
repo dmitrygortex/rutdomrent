@@ -66,12 +66,5 @@ public class NotificationHelper {
             context.startActivity(intent);
         }
     }
-// only API 26+
-//    private static void openChannelSettings(String channelId, Context context) {
-//        Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-//        intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
-//        intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId);
-//        context.startActivity(intent);
-//    }
 
 }
