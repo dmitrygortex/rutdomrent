@@ -9,6 +9,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:background="@color/grey2"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +94,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -100,19 +103,19 @@
 
                 <TextView
                     android:id="@+id/themeOfRent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="213dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="32dp"
                     android:fontFamily="@font/inter_regular"
                     android:text="Фотографии макета трамвая"
                     android:textColor="@color/black"
+                    android:gravity="center"
+                    android:maxLines="1"
                     android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.882"
+                    app:layout_constraintHorizontal_bias="0.516"
                     app:layout_constraintStart_toStartOf="parent"
-
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.358"></TextView>
+                    app:layout_constraintTop_toBottomOf="@+id/typeOfRoom"></TextView>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/cancelRent"

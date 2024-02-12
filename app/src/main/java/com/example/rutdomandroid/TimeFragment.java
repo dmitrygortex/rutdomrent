@@ -200,7 +200,7 @@ public class TimeFragment extends Fragment {
                                                 getActivity().runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        Toast.makeText(getContext(), "Время уже забронировано", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getContext(), "Упс. Время уже забронировано", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                             } else {
@@ -224,7 +224,7 @@ public class TimeFragment extends Fragment {
                             Toast.makeText(getContext(), "Что-то пошло не так.", Toast.LENGTH_SHORT).show();
 
                         });
-                Toast.makeText(getContext(), time, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), time, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -248,13 +248,13 @@ public class TimeFragment extends Fragment {
         Intent intent = new Intent(this.getContext(), AlarmReceiver.class);
         pendingIntent2 = PendingIntent.getBroadcast(this.getContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, selectedTime - AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_DAY, pendingIntent2);
-        getActivity().runOnUiThread(new Runnable() {
+       /* getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Toast.makeText(getContext(), "Напоминание запущено", Toast.LENGTH_LONG).show();
             }
         });
-
+*/
     }
 
     private void cancelAlarm() {
@@ -264,7 +264,7 @@ public class TimeFragment extends Fragment {
             alarmManager = (AlarmManager) this.getContext().getSystemService(ALARM_SERVICE);
         }
         alarmManager.cancel(pendingIntent2);
-        Toast.makeText(getContext(), "Напоминание закрыто", Toast.LENGTH_LONG).show();
+       // Toast.makeText(getContext(), "Напоминание закрыто", Toast.LENGTH_LONG).show();
 
     }
 

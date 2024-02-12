@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.room.Room;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.rutdomandroid.roomDatabase.RentDatabase;
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static RentDatabase rentDatabase;
@@ -18,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String languageToLoad  = "ru"; // your language
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+        this.setContentView(R.layout.fragment_rent);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new LoginFragment());

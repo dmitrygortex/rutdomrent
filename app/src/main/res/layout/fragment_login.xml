@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+
     tools:context=".LoginFragment">
 
 
@@ -70,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="84dp"
                 android:background="@drawable/button_time_shape"
-
+                android:textColor="@color/black"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Почта"
@@ -88,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_time_shape"
+                android:textColor="@color/black"
 
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"

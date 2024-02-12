@@ -94,7 +94,7 @@ public class RegisterFragment extends Fragment {
                 String email = binding.emailText.getText().toString();
                 String password = binding.passwordText.getText().toString();
                 String name = binding.FIOText.getText().toString();
-                String group = binding.institute.getText().toString();
+                String institute = binding.institute.getText().toString();
                 if (email.isEmpty()) {
                     Toast.makeText(getContext(), "Поле email  должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
@@ -108,12 +108,12 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(getContext(), "Поле Пароль должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (group.isEmpty()) {
-                    Toast.makeText(getContext(), "Поле группа должно быть заполнено", Toast.LENGTH_SHORT).show();
+                if (institute.isEmpty()) {
+                    Toast.makeText(getContext(), "Поле институт должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!isGroupValid(group)){
-                    Toast.makeText(getContext(), "Введена несуществующая группа", Toast.LENGTH_SHORT).show();
+                if (!isInstituteValid(institute)){
+                    Toast.makeText(getContext(), "Введен несуществующий институт", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (name.isEmpty()) {
@@ -132,7 +132,7 @@ public class RegisterFragment extends Fragment {
                                     userMap.put("email", email);
                                     userMap.put("password", password);
                                     userMap.put("fullName", name);
-                                    userMap.put("group", group);
+                                    userMap.put("institute", institute);
 
                                     userMap.put("uid", uid);
 

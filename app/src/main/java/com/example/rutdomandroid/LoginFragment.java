@@ -111,8 +111,8 @@ public class LoginFragment extends Fragment {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getContext(), "Что-то пошло не так.",
-                                        Toast.LENGTH_SHORT).show();
+                                /*Toast.makeText(getContext(), "Что-то пошло не так.",
+                                        Toast.LENGTH_SHORT).show();*/
                             }
                         });
 

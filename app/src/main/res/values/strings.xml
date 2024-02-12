@@ -21,6 +21,9 @@
     <string name="app_name">rutdomandroid</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="infoTitle">Информация</string>
+    <string name="BookingTitle">Бронирования</string>
+    <string name="ProfileTitle">Профиль</string>
 
 </resources>
 
