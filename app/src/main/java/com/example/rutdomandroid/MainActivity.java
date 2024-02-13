@@ -12,16 +12,22 @@ import android.view.View;
 
 import com.example.rutdomandroid.roomDatabase.RentDatabase;
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
+import com.example.rutdomandroid.roomDatabase.UserDatabase;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static RentDatabase rentDatabase;
+    private static UserDatabase userDatabase;
+    FirebaseAuth auth;
+
     ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String languageToLoad  = "ru"; // your language
+        auth=FirebaseAuth.getInstance();
+        String languageToLoad  = "ru";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -31,9 +37,15 @@ public class MainActivity extends AppCompatActivity {
         this.setContentView(R.layout.fragment_rent);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new LoginFragment());
+        if (auth!= null && auth.getCurrentUser()!=null){
+            replaceFragment(new InfoFragment());
+
+        }else replaceFragment(new LoginFragment());
         binding.buttonNavView.setVisibility(View.GONE);
         rentDatabase = Room.databaseBuilder(getApplicationContext(), RentDatabase.class, "bookings")
+                .fallbackToDestructiveMigration()
+                .build();
+        userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "users")
                 .fallbackToDestructiveMigration()
                 .build();
 
@@ -66,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction()
                 .replace(R.id.frame_layout,fragment, null)
                 .setReorderingAllowed(false)
-                .addToBackStack("name") // Name can be null
+                .addToBackStack(null)
                 .commit();
     }
     public void setButtonNavViewVisibility(int visibility) {
@@ -74,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public static RentDatabase getRentDatabase() {
         return rentDatabase;
+    }
+
+    public static UserDatabase getUserDatabase() {
+        return userDatabase;
     }
 }
 

@@ -88,7 +88,7 @@ public class RentFragment extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_layout, fragment)
                         .setReorderingAllowed(false)
-                        .addToBackStack("name")
+                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -101,7 +101,7 @@ public class RentFragment extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_layout, new CancelationFragment())
                         .setReorderingAllowed(false)
-                        .addToBackStack("name")
+                        .addToBackStack(null)
                         .commit();
             }
         });

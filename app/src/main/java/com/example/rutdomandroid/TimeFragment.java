@@ -30,6 +30,7 @@ import com.example.rutdomandroid.adapter.TimeAdapter;
 import com.example.rutdomandroid.databinding.RentTimeBinding;
 import com.example.rutdomandroid.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
@@ -236,7 +237,7 @@ public class TimeFragment extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_layout, new RentFragment(), null)
                         .setReorderingAllowed(true)
-                        .addToBackStack("name")
+                        .addToBackStack(null)
                         .commit();
             }
         });

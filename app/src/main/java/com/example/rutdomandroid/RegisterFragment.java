@@ -1,30 +1,22 @@
 package com.example.rutdomandroid;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.rutdomandroid.databinding.FragmentLoginBinding;
 import com.example.rutdomandroid.databinding.FragmentRegisterBinding;
+import com.example.rutdomandroid.roomDatabase.UserDAO;
+import com.example.rutdomandroid.roomDatabase.UserDatabase;
+import com.example.rutdomandroid.roomDatabase.UserEntity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,17 +24,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 public class RegisterFragment extends Fragment {
     FragmentRegisterBinding binding;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
     TextView loginLabel;
 
     FirebaseFirestore db;
@@ -68,7 +60,7 @@ public class RegisterFragment extends Fragment {
         View view = binding.getRoot();
         loginLabel=binding.loginLabel;
         loginButton = binding.registerButton;
-        mAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         loginLabel.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +70,7 @@ public class RegisterFragment extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_layout, new LoginFragment(), null)
                         .setReorderingAllowed(true)
-                        .addToBackStack("name")
+                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -120,12 +112,12 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(getContext(), "Поле ФИО должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mAuth.createUserWithEmailAndPassword(email, password)
+                auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = auth.getCurrentUser();
                                     String uid = user.getUid();
 
                                     Map<String, Object> userMap = new HashMap<>();
@@ -141,13 +133,28 @@ public class RegisterFragment extends Fragment {
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
+                                                    UserDatabase userDatabase = MainActivity.getUserDatabase();
+                                                    Executors.newSingleThreadExecutor().execute(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            UserDAO userDAO = userDatabase.userDao();
+                                                            UserEntity userEntity = new UserEntity();
+                                                            userEntity.setEmail(email);
+                                                            userEntity.setInstitute(institute);
+                                                            userEntity.setPassword(password);
+                                                            userEntity.setFullName(name);
+                                                            userEntity.setUid(auth.getCurrentUser().getUid());
+                                                            userDAO.createUser(userEntity);
+
+                                                        }
+                                                    });
                                                     Toast.makeText(inflater.getContext(), "Аккаунт создан.",
                                                             Toast.LENGTH_SHORT).show();
                                                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                                                     fragmentManager.beginTransaction()
                                                             .replace(R.id.frame_layout, new InfoFragment(), null)
                                                             .setReorderingAllowed(true)
-                                                            .addToBackStack("name")
+                                                            .addToBackStack(null)
                                                             .commit();
                                                 }
 

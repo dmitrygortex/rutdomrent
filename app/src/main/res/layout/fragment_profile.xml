@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/white4"
 
         android:paddingLeft="42dp"
         android:paddingRight="42dp"
@@ -47,7 +47,7 @@
             android:fontFamily="@font/inter_bold"
             android:text="Удалить аккаунт"
             android:textAllCaps="false"
-            android:textColor="@color/white4"
+            android:textColor="@color/white"
 
             android:textSize="20sp"
 
@@ -82,7 +82,7 @@
             android:fontFamily="@font/inter_bold"
             android:text="Изменить данные"
             android:textAllCaps="false"
-            android:textColor="@color/white4"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

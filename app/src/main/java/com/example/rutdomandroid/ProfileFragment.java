@@ -2,7 +2,6 @@ package com.example.rutdomandroid;
 
 import static android.content.ContentValues.TAG;
 
-import static com.example.rutdomandroid.RegisterFragment.isGroupValid;
 import static com.example.rutdomandroid.RegisterFragment.isInstituteValid;
 
 import android.app.AlertDialog;
@@ -22,23 +21,27 @@ import android.widget.Toast;
 
 import com.example.rutdomandroid.databinding.FragmentProfileBinding;
 import com.example.rutdomandroid.roomDatabase.RentDatabase;
+import com.example.rutdomandroid.roomDatabase.UserDAO;
+import com.example.rutdomandroid.roomDatabase.UserDatabase;
+import com.example.rutdomandroid.roomDatabase.UserEntity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 
 
 public class ProfileFragment extends Fragment {
-
+    String password,email,institute, fio;
     FragmentProfileBinding binding;
+    UserEntity userEntity;
     String email_first,password_first;
 
 
@@ -52,55 +55,53 @@ public class ProfileFragment extends Fragment {
         View view = binding.getRoot();
         Button exitaccount = binding.exitAccount;
         Button updateaccount = binding.changeAccount;
-        db.collection("users").document(user.getUid())
-                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                email_first=document.getString("email");
-                                password_first=document.getString("password");
+        String uid = null;
+        if (user != null) {
+             uid= user.getUid();
+        }
+        UserDatabase userDatabase=MainActivity.getUserDatabase();
+        UserDAO userDAO=userDatabase.userDao();
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                userEntity = userDAO.readUser(Objects.requireNonNull(user).getUid());
+                email=userEntity.getEmail();
+                fio =userEntity.getFullName();
+                institute=userEntity.getInstitute();
+                password=userEntity.getPassword();
+                binding.editTextText2.setText(email);
+                binding.editTextText5.setText(password);
+                binding.editTextText4.setText(fio);
+                binding.editTextText3.setText(institute);
 
-                                binding.editTextText2.setText(document.getString("email"));
-                                binding.editTextText5.setText(document.getString("password"));
-                                binding.editTextText4.setText(document.getString("fullName"));
-
-                                binding.editTextText3.setText(document.getString("institute"));
-
-                            } else {
-                            }
-                        } else {
-                        }
-                    }
-                });
+            }
+        });
 
 
         updateaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = binding.editTextText2.getText().toString();
-                String password = binding.editTextText5.getText().toString();
-                String insitute = binding.editTextText3.getText().toString();
-                String fio = binding.editTextText4.getText().toString();
-                if (email.isEmpty()) {
+                String new_email = binding.editTextText2.getText().toString();
+                String new_password = binding.editTextText5.getText().toString();
+                institute = binding.editTextText3.getText().toString();
+                fio = binding.editTextText4.getText().toString();
+                if (new_email.isEmpty()) {
                     Toast.makeText(getContext(), "Поле email  должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.length() < 8) {
+                if (new_password.length() < 8) {
                     Toast.makeText(getContext(), "Минимальная длина пароля 8 символов", Toast.LENGTH_SHORT).show();
-
                     return;
                 }
-                if (password.isEmpty()) {
+                if (new_password.isEmpty()) {
                     Toast.makeText(getContext(), "Поле Пароль должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (insitute.isEmpty()) {
+                if (institute.isEmpty()) {
                     Toast.makeText(getContext(), "Поле Группа должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!isInstituteValid(insitute)){
+                if (!isInstituteValid(institute)){
                     Toast.makeText(getContext(), "Введен несуществующий институт", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -109,22 +110,35 @@ public class ProfileFragment extends Fragment {
                     return;
                 }
                 Map<String, Object> data = new HashMap<>();
-                data.put("email", email);
-                data.put("password", password);
-                data.put("isnstitute", insitute);
+                data.put("email", new_email);
+                data.put("password", new_password);
+                data.put("isnstitute", institute);
                 data.put("fullname", fio);
                 db.collection("users").document(user.getUid())
                         .update(data);
                 AuthCredential credential = EmailAuthProvider
-                        .getCredential(email_first, password_first);
+                        .getCredential(email, password);
+                UserDatabase userDatabase = MainActivity.getUserDatabase();
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        UserDAO userDAO = userDatabase.userDao();
+                        userEntity.setEmail(new_email);
+                        userEntity.setInstitute(institute);
+                        userEntity.setPassword(new_password);
+                        userEntity.setFullName(fio);
+                        userDAO.updateUser(userEntity);
+
+                    }
+                });
 
                 user.reauthenticate(credential)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    user.updatePassword(password);
-                                    user.updateEmail(email);
+                                    user.updatePassword(new_password);
+                                    user.updateEmail(new_email);
                                     Toast.makeText(getContext(), "Профиль обновлен.", Toast.LENGTH_SHORT).show();
 
                                 } else {
@@ -156,7 +170,7 @@ public class ProfileFragment extends Fragment {
                                 fragmentManager.beginTransaction()
                                         .replace(R.id.frame_layout, new LoginFragment(), null)
                                         .setReorderingAllowed(false)
-                                        .addToBackStack("name")
+                                        .addToBackStack(null)
                                         .commit();
                             }
                         })
@@ -205,7 +219,7 @@ public class ProfileFragment extends Fragment {
                                 fragmentManager.beginTransaction()
                                         .replace(R.id.frame_layout, new LoginFragment(), null)
                                         .setReorderingAllowed(false)
-                                        .addToBackStack("name")
+                                        .addToBackStack(null)
                                         .commit();
                             }
                         })

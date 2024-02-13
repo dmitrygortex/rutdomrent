@@ -60,7 +60,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:gravity="center_horizontal"
                 android:text="Авторизация"
-                android:textColor="@color/white4"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +132,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="Создать аккаунт"
 
-                android:textColor="@color/white4"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

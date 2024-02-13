@@ -21,6 +21,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/card1_background"
             android:divider="?android:dividerHorizontal"
+
             android:dividerPadding="@dimen/base_padding"
             android:showDividers="middle"
             android:weightSum="3">
@@ -103,8 +104,8 @@
 
                 <TextView
                     android:id="@+id/themeOfRent"
-                    android:layout_width="213dp"
-                    android:layout_height="19dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/inter_regular"
                     android:text="Фотографии макета трамвая"
