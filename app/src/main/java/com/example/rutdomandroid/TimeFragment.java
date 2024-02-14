@@ -206,10 +206,10 @@ public class TimeFragment extends Fragment {
                                                 });
                                             } else {
                                                 RentEntity rent = new RentEntity();
-                                                rent.setDate(date); // Устанавливаем дату
-                                                rent.setRoom(room); // Устанавливаем комнату
-                                                rent.setPurpose(purpose); // Устанавливаем цель
-                                                rent.setTime(time); // Устанавливаем время
+                                                rent.setDate(date);
+                                                rent.setRoom(room);
+                                                rent.setPurpose(purpose);
+                                                rent.setTime(time);
                                                 rent.setUid(auth.getUid());
                                                 rentDatabase.bookingDao().createRent(rent);
                                             }

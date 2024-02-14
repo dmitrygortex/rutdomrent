@@ -4,7 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#00215A</color>
 
-    <color name="white4">#EAEBF8</color>
 	<color name="darkblue">#00215A</color>
 	<color name="green1">#BBF5C4</color>
 	<color name="red1">#EFC4C4</color>
@@ -29,7 +28,6 @@
 	<color name="teal_200">#FF03DAC5</color>
 	<color name="teal_700">#FF018786</color>
 
-	<color name="purple1">#EAEBF8</color>
 	<color name="grey">#858585</color>
 	<color name="grey2">#C6C6C6</color>
 	<color name="_bg__home_ek2_color">#EAEBF8</color>

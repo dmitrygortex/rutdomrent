@@ -1,19 +1,11 @@
 package com.example.rutdomandroid;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-import static java.security.AccessController.getContext;
-
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentResultListener;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +17,6 @@ import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.rutdomandroid.databinding.ActivityMainBinding;
-import com.example.rutdomandroid.databinding.FragmentRegisterBinding;
 import com.example.rutdomandroid.databinding.FragmentRentBinding;
 
 import java.text.SimpleDateFormat;
@@ -37,6 +27,7 @@ public class RentFragment extends Fragment {
     FragmentRentBinding binding;
     Button next_button;
     String date, room, issue;
+    CalendarView calendar;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -50,6 +41,8 @@ public class RentFragment extends Fragment {
         View view = binding.getRoot();
         String[] values = getResources().getStringArray(R.array.rooms);
         Spinner spinner = binding.spinner;
+        calendar=binding.calendarView;
+        calendar.setMinDate(System.currentTimeMillis());
         ArrayAdapter<String> adapter = new ArrayAdapter(inflater.getContext(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

@@ -20,9 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/card1_background"
-            android:divider="?android:dividerHorizontal"
-
-            android:dividerPadding="@dimen/base_padding"
+            android:divider="@drawable/divider_vertical"
             android:showDividers="middle"
             android:weightSum="3">
 
@@ -106,15 +104,15 @@
                     android:id="@+id/themeOfRent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="28dp"
                     android:fontFamily="@font/inter_regular"
+                    android:gravity="center"
+
+                    android:maxLines="1"
                     android:text="Фотографии макета трамвая"
                     android:textColor="@color/black"
-                    android:gravity="center"
-                    android:maxLines="1"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.516"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/typeOfRoom"></TextView>
 
@@ -122,7 +120,7 @@
                     android:id="@+id/cancelRent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginHorizontal="20dp"
                     android:background="@drawable/button_background"
                     android:fontFamily="@font/inter_bold"
                     android:text="Отменить бронь"

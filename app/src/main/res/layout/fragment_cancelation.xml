@@ -23,8 +23,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rent_inits_recycler"
-        android:paddingVertical="30dp"
-        android:paddingHorizontal="30dp"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="20dp"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

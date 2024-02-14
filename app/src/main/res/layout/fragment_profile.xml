@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white4"
+        android:background="@color/white"
 
         android:paddingLeft="42dp"
         android:paddingRight="42dp"
@@ -29,7 +29,7 @@
             android:fontFamily="@font/inter_bold"
             android:text="Выйти  из аккаунта"
             android:textAllCaps="false"
-            android:textColor="@color/white4"
+            android:textColor="@color/blue4"
 
             android:textSize="20sp"
 
@@ -159,7 +159,7 @@
             android:textColor="@color/black"
 
             android:paddingLeft="10dp"
-            android:textColorHint="@drawable/selector"
+            android:textColorHint="@color/blue4"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -181,7 +181,7 @@
             android:paddingLeft="10dp"
             android:textColor="@color/black"
 
-            android:textColorHint="@drawable/selector"
+            android:textColorHint="@color/blue4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -201,7 +201,7 @@
             android:minHeight="48dp"
             android:padding="5dp"
             android:paddingLeft="10dp"
-            android:textColorHint="@drawable/selector"
+            android:textColorHint="@color/blue4"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -222,7 +222,7 @@
 
             android:padding="5dp"
             android:paddingLeft="10dp"
-            android:textColorHint="@drawable/selector"
+            android:textColorHint="@color/blue4"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
