@@ -8,9 +8,10 @@
     tools:context=".RegisterFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="330dp"
-        android:layout_height="570dp"
-        app:cardCornerRadius="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="60dp"
+        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
 
-            android:padding="21dp">
+            android:padding="@dimen/base_padding">
 
             <TextView
                 android:id="@+id/textView11"
@@ -38,7 +39,6 @@
                 android:textColor="@color/blue4"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,87 +46,86 @@
                 android:id="@+id/FIO_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-
-                android:layout_marginBottom="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="ФИО"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:padding="8dp"
+                android:padding="@dimen/base_padding"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/email_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <EditText
                 android:id="@+id/email_text"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-
-                android:layout_marginBottom="36dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:padding="8dp"
+                android:padding="@dimen/base_padding"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/password_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="@+id/FIO_text"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/FIO_text"
+                app:layout_constraintTop_toBottomOf="@id/FIO_text" />
 
             <EditText
                 android:id="@+id/password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
 
-                android:layout_marginTop="220dp"
                 android:background="@drawable/button_time_shape"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Пароль"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:padding="8dp"
+                android:padding="@dimen/base_padding"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView11" />
+                app:layout_constraintEnd_toEndOf="@+id/email_text"
+                app:layout_constraintStart_toStartOf="@+id/email_text"
+                app:layout_constraintTop_toBottomOf="@id/email_text" />
 
             <EditText
                 android:id="@+id/institute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-
-                android:layout_marginTop="304dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:background="@drawable/button_time_shape"
                 android:fontFamily="@font/inter_light"
                 android:gravity="center"
                 android:hint="Институт"
 
                 android:inputType="textEmailAddress"
+
                 android:minHeight="48dp"
                 android:padding="8dp"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView11" />
+                app:layout_constraintEnd_toEndOf="@+id/password_text"
+                app:layout_constraintStart_toStartOf="@+id/password_text"
+                app:layout_constraintTop_toBottomOf="@+id/password_text" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/registerButton"
