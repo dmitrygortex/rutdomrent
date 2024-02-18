@@ -3,33 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:layout_height="match_parent"
 
-    android:layout_height="match_parent">
+    android:background="@color/white">
 
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTime2"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="40dp"
-        android:id="@+id/my_rent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Мои бронирования"
-        android:fontFamily="@font/inter_bold"
-        android:textColor="@color/white"
+        android:layout_height="wrap_content"
         android:background="@color/darkblue"
-        android:textSize="15sp"></TextView>
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/back_button" />
+
+        <TextView
+            android:id="@+id/my_rent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/darkblue"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+
+            android:paddingRight="35dp"
+            android:text="Мои бронирования"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rent_inits_recycler"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="20dp"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_rent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTime2"></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

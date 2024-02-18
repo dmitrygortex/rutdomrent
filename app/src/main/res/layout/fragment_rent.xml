@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/vertical_margin"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/inter_bold"
             android:text="Бронирование"
             android:textColor="@color/darkblue"
@@ -33,6 +34,7 @@
             android:id="@+id/calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/blue_shape"
             android:dateTextAppearance="@style/CalenderViewDateCustomText"
             android:theme="@style/CalenderViewCustom"
@@ -46,9 +48,10 @@
             style="@style/DescribeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Помещение:"
-            android:textColor="@color/grey"
 
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/calendarView"
             app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
@@ -86,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/vertical_margin"
             android:text="Цель посещения:"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/describe_label_1"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -114,7 +117,6 @@
             android:layout_width="200dp"
             android:layout_height="55dp"
             android:layout_margin="@dimen/vertical_margin"
-            android:layout_marginTop="20dp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/inter_bold"
             android:gravity="center"

@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.rutdomandroid.adapter.RentInitAdapter;
+import com.example.rutdomandroid.comparator.RentDayComparator;
+import com.example.rutdomandroid.comparator.RentMonthComparator;
+import com.example.rutdomandroid.comparator.RentYearComparator;
 import com.example.rutdomandroid.databinding.FragmentCancelationBinding;
 import com.example.rutdomandroid.model.RentInit;
 import com.example.rutdomandroid.roomDatabase.RentDAO;
@@ -22,13 +24,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Executors;
 
 public class CancelationFragment extends Fragment {
     FragmentCancelationBinding binding;
     RecyclerView recyclerView;
-
+    Comparator<RentInit>  comparator = new RentYearComparator().thenComparing( new RentMonthComparator().thenComparing(new RentDayComparator()));
     public CancelationFragment() {
     }
 
@@ -61,6 +65,7 @@ public class CancelationFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            bookings.sort(comparator);
                             RentInitAdapter bookingAdapter = new RentInitAdapter(inflater.getContext(), bookings);
                             recyclerView = binding.rentInitsRecycler;
                             recyclerView.setLayoutManager(layoutManager);

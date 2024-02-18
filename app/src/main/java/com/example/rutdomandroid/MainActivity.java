@@ -10,17 +10,21 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.rutdomandroid.model.TimeSlot;
 import com.example.rutdomandroid.roomDatabase.RentDatabase;
 import com.example.rutdomandroid.databinding.ActivityMainBinding;
 import com.example.rutdomandroid.roomDatabase.UserDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class MainActivity extends AppCompatActivity {
     private static RentDatabase rentDatabase;
     private static UserDatabase userDatabase;
     FirebaseAuth auth;
+    TreeSet<TimeSlot> slots= new TreeSet<TimeSlot>();
 
     ActivityMainBinding binding;
     @Override
@@ -37,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
         this.setContentView(R.layout.fragment_rent);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        if (auth!= null && auth.getCurrentUser()!=null){
-            replaceFragment(new InfoFragment());
-
-        }else replaceFragment(new LoginFragment());
+        replaceFragment(new LoginFragment());
         binding.buttonNavView.setVisibility(View.GONE);
         rentDatabase = Room.databaseBuilder(getApplicationContext(), RentDatabase.class, "bookings")
                 .fallbackToDestructiveMigration()

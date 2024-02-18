@@ -25,10 +25,10 @@
             android:weightSum="3">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+                android:layout_width="465dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:padding="@dimen/base_padding">
+                android:padding="9dp">
 
                 <TextView
                     android:id="@+id/yearOfRentInit"
@@ -50,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="center"
+                    android:maxLines="1"
                     android:text="1 июня"
                     android:textColor="@color/black"
                     android:textSize="15sp"
@@ -62,17 +63,19 @@
                     android:id="@+id/timeOfRentInit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="24dp"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="center"
+                    android:maxLines="2"
                     android:text="15:00 - 17:00"
+
                     android:textColor="@color/black"
                     android:textSize="15sp"
 
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
 
-                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintHorizontal_bias="0.466"
                     app:layout_constraintStart_toStartOf="parent"></TextView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,7 +111,7 @@
                     android:fontFamily="@font/inter_regular"
                     android:gravity="center"
 
-                    android:maxLines="1"
+                    android:maxLines="3"
                     android:text="Фотографии макета трамвая"
                     android:textColor="@color/black"
                     android:textSize="15sp"
@@ -121,6 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="4dp"
                     android:background="@drawable/button_background"
                     android:fontFamily="@font/inter_bold"
                     android:text="Отменить бронь"
@@ -129,9 +133,9 @@
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
 
-                    ></androidx.appcompat.widget.AppCompatButton>
+                    app:layout_constraintHorizontal_bias="0.853"
+                    app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
