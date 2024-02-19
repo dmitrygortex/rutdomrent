@@ -89,7 +89,7 @@ public class TimeFragment extends Fragment {
 
         }
 
-        Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
         List<String> timeValues = Arrays.asList(getResources().getStringArray(R.array.time_values));

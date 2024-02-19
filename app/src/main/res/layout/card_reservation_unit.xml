@@ -31,7 +31,7 @@
                 android:padding="9dp">
 
                 <TextView
-                    android:id="@+id/yearOfRentInit"
+                    android:id="@+id/place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -45,7 +45,7 @@
                     app:layout_constraintTop_toTopOf="parent"></TextView>
 
                 <TextView
-                    android:id="@+id/dateOfRentInit"
+                    android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
@@ -57,7 +57,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/yearOfRentInit"></TextView>
+                    app:layout_constraintTop_toBottomOf="@id/place"></TextView>
 
                 <TextView
                     android:id="@+id/timeOfRentInit"
@@ -85,10 +85,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:padding="@dimen/base_padding">
+                android:padding="10dp"
+                android:paddingTop="12dp">
 
                 <TextView
-                    android:id="@+id/typeOfRoom"
+                    android:id="@+id/fio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
@@ -104,7 +105,7 @@
                     ></TextView>
 
                 <TextView
-                    android:id="@+id/themeOfRent"
+                    android:id="@+id/reason"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
@@ -117,13 +118,13 @@
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/typeOfRoom"></TextView>
+                    app:layout_constraintTop_toBottomOf="@+id/fio"></TextView>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/cancelRent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="18dp"
                     android:layout_marginBottom="4dp"
                     android:background="@drawable/button_background"
                     android:fontFamily="@font/inter_bold"

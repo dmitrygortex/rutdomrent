@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
     private static RentDatabase rentDatabase;
     private static UserDatabase userDatabase;
     FirebaseAuth auth;
-    TreeSet<TimeSlot> slots= new TreeSet<TimeSlot>();
 
     ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         auth=FirebaseAuth.getInstance();
+
         String languageToLoad  = "ru";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         this.setContentView(R.layout.fragment_rent);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new LoginFragment());
         binding.buttonNavView.setVisibility(View.GONE);
         rentDatabase = Room.databaseBuilder(getApplicationContext(), RentDatabase.class, "bookings")
                 .fallbackToDestructiveMigration()
@@ -51,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
 
+        if (auth.getCurrentUser() == null){
+            replaceFragment(new LoginFragment());
 
+        }
+        else         replaceFragment(new InfoFragment());
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if  (item.getItemId()==R.id.info_item) {
                  replaceFragment(new InfoFragment());

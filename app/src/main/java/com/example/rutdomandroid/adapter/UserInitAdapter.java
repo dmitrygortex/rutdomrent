@@ -1,3 +1,4 @@
+/*
 package com.example.rutdomandroid.adapter;
 
 import android.content.Context;
@@ -76,3 +77,4 @@ public class UserInitAdapter extends RecyclerView.Adapter<UserInitAdapter.UserIn
         }
     }
 }
+*/

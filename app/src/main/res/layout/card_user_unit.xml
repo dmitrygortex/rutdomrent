@@ -9,139 +9,138 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:background="@color/grey2"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/card1_background"
             android:divider="@drawable/divider_vertical"
-            android:showDividers="beginning"
-            android:dividerPadding="@dimen/base_padding"
-            android:weightSum="3"
-            >
+            android:showDividers="middle"
+            android:weightSum="3">
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+                android:layout_width="465dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:padding="@dimen/base_padding"
-                >
+                android:padding="9dp">
 
                 <TextView
-                    android:id="@+id/text_rented_time"
+                    android:id="@+id/place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="28dp"
                     android:fontFamily="@font/inter_bold"
-                    android:text="Занятые часы:"
+                    android:gravity="center"
+                    android:text="Переговорная"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintBottom_toTopOf="@+id/text_time_of_rented_hours"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"></TextView>
 
-
                 <TextView
-                    android:id="@+id/text_time_of_rented_hours"
+                    android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="32dp"
                     android:fontFamily="@font/inter_bold"
-                    android:text="52"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="10.00-11.00"
                     android:textColor="@color/black"
-                    android:textSize="52sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_rented_time"
-                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/place"></TextView>
+
+                <TextView
+                    android:id="@+id/institute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="center"
+                    android:maxLines="2"
+
+                    android:text="ИУЦТ"
+                    android:textColor="@color/black"
+
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"></TextView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:padding="@dimen/base_padding"
-                >
+                android:padding="@dimen/base_padding">
+
                 <TextView
+                    android:id="@+id/fio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_user_name"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="Alex Miller"
                     android:fontFamily="@font/inter_bold"
+                    android:gravity="center"
+                    android:text="Alex Miller"
                     android:textColor="@color/black"
                     android:textSize="22sp"
-
-                    ></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/text_group"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_user_name"
-                    android:text="ABC-333"
-                    android:fontFamily="@font/inter_bold"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:layout_marginTop="@dimen/vertical_margin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
 
                     ></TextView>
-
 
                 <TextView
+                    android:id="@+id/reason"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_email"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_group"
-                    android:text="example@domen.ru"
-                    android:fontFamily="@font/inter_bold"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:gravity="center"
+
+                    android:maxLines="3"
+                    android:text="Фотографии макета трамвая"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-
-                    ></TextView>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fio"></TextView>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_rented_times_info"
+                    android:id="@+id/cancelRent"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="50dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textAllCaps="false"
-                    android:text="Бронирования"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/inter_bold"
-                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="4dp"
                     android:background="@drawable/button_background"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="example@domen.ru"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
 
-                    ></androidx.appcompat.widget.AppCompatButton>
+                    app:layout_constraintHorizontal_bias="0.853"
+                    app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
-
         </LinearLayout>
-
-
-
 
 
     </androidx.cardview.widget.CardView>

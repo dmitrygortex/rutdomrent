@@ -64,7 +64,7 @@
             app:cardBackgroundColor="@color/blue4"
             android:layout_margin="@dimen/vertical_margin"
 
-            app:cardCornerRadius="60dp"
+            app:cardCornerRadius="12dp"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="@id/calendarView"
             app:layout_constraintStart_toStartOf="@+id/calendarView"

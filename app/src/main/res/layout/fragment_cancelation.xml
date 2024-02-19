@@ -12,6 +12,13 @@
         android:id="@+id/linearLayoutTime2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:padding="@dimen/base_padding"
+
+        android:text="Мои бронирования"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/white"
         android:background="@color/darkblue"
         android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"

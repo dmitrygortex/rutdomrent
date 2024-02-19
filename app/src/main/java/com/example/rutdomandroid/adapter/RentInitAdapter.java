@@ -25,7 +25,6 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.SortedSet;
 import java.util.concurrent.Executors;
 
 public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentInitViewHolder> {
@@ -155,11 +154,11 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
         public RentInitViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            yearOfRentInit = itemView.findViewById(R.id.yearOfRentInit);
-            dateOfRentInit = itemView.findViewById(R.id.dateOfRentInit);
+            yearOfRentInit = itemView.findViewById(R.id.place);
+            dateOfRentInit = itemView.findViewById(R.id.time);
             timeOfRentInit = itemView.findViewById(R.id.timeOfRentInit);
-            typeOfRoom = itemView.findViewById(R.id.typeOfRoom);
-            reasonOfRentInit = itemView.findViewById(R.id.themeOfRent);
+            typeOfRoom = itemView.findViewById(R.id.fio);
+            reasonOfRentInit = itemView.findViewById(R.id.reason);
             cancelRent = itemView.findViewById(R.id.cancelRent);
         }
     }

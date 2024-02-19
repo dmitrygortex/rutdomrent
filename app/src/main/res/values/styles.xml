@@ -13,7 +13,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/blue</item>
-        <item name="fontFamily">@font/inter_extralight</item>
+        <item name="fontFamily">@font/inter_light</item>
     </style>
 
     <style name="BaseInputEditText">
@@ -32,6 +32,8 @@
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:popupBackground">@color/blue4</item>
+        <item name="android:textColor">@color/black</item>
+
     </style>
 
 

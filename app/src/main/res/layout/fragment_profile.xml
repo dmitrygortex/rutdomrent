@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
 
         android:paddingLeft="42dp"
@@ -24,7 +24,7 @@
             android:layout_width="205dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/blue_shape"
             android:fontFamily="@font/inter_bold"
             android:text="Выйти  из аккаунта"
@@ -42,15 +42,16 @@
             android:layout_width="205dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/blue_shape"
             android:fontFamily="@font/inter_bold"
             android:text="Удалить аккаунт"
             android:textAllCaps="false"
             android:textColor="@color/white"
-
+            android:layout_marginBottom="25dp"
             android:textSize="20sp"
 
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exitAccount" />
@@ -95,7 +96,7 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
 
-            android:fontFamily="@font/inter_extralight"
+            android:fontFamily="@font/inter_light"
             android:text="Email"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/inter_extralight"
+            android:fontFamily="@font/inter_light"
             android:textColor="@color/black"
 
             android:text="Пароль"
@@ -123,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/inter_extralight"
+            android:fontFamily="@font/inter_light"
             android:text="ФИО"
             android:textColor="@color/black"
 
@@ -138,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/inter_extralight"
+            android:fontFamily="@font/inter_light"
             android:textColor="@color/black"
 
             android:text="Институт"

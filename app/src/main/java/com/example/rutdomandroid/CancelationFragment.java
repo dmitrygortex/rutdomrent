@@ -3,6 +3,7 @@ package com.example.rutdomandroid;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,6 +74,17 @@ public class CancelationFragment extends Fragment {
                         }
                     });
                 }
+            }
+        });
+        binding.backLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout, new RentFragment(), null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
         return view;

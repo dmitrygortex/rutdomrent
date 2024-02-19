@@ -2,6 +2,6 @@
 <resources>
     <!-- лучше ставьте padding и margin так -->
     <dimen name="horizontal_margin">5dp</dimen>
-    <dimen name="vertical_margin">20dp</dimen>
+    <dimen name="vertical_margin">15dp</dimen>
     <dimen name="base_padding">12dp</dimen>
 </resources>
