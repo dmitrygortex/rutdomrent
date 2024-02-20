@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.rutdomandroid.adapter.RentInitAdapter;
 import com.example.rutdomandroid.comparator.RentDayComparator;
 import com.example.rutdomandroid.comparator.RentMonthComparator;
+import com.example.rutdomandroid.comparator.RentTimeComparator;
 import com.example.rutdomandroid.comparator.RentYearComparator;
 import com.example.rutdomandroid.databinding.FragmentCancelationBinding;
 import com.example.rutdomandroid.model.RentInit;
@@ -33,7 +34,7 @@ import java.util.concurrent.Executors;
 public class CancelationFragment extends Fragment {
     FragmentCancelationBinding binding;
     RecyclerView recyclerView;
-    Comparator<RentInit>  comparator = new RentYearComparator().thenComparing( new RentMonthComparator().thenComparing(new RentDayComparator()));
+    Comparator<RentInit>  comparator = new RentYearComparator().thenComparing( new RentMonthComparator().thenComparing(new RentDayComparator().thenComparing(new RentTimeComparator())));
     public CancelationFragment() {
     }
 

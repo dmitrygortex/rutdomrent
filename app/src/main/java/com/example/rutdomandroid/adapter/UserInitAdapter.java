@@ -1,15 +1,14 @@
-/*
+
 package com.example.rutdomandroid.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SortedList;
 
 import com.example.rutdomandroid.R;
 import com.example.rutdomandroid.model.UserInit;
@@ -28,15 +27,14 @@ public class UserInitAdapter extends RecyclerView.Adapter<UserInitAdapter.UserIn
         this.users = users;
     }
 
-    @NonNull
     @Override
-    public UserInitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserInitViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         // hourly triage to identify violators
         Collections.sort(users, new Comparator<UserInit>() {
             @Override
             public int compare(UserInit o1, UserInit o2) {
-                return Integer.compare(Integer.parseInt(o1.getRentedHours()),
-                        Integer.parseInt(o2.getRentedHours()));
+                return Integer.compare(Integer.parseInt(o1.getTime().split("\\.")[0]),
+                        Integer.parseInt(o2.getTime().split("\\.")[0]));
             }
         });
 
@@ -45,13 +43,15 @@ public class UserInitAdapter extends RecyclerView.Adapter<UserInitAdapter.UserIn
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserInitViewHolder holder, int position) {
+    public void onBindViewHolder( UserInitViewHolder holder, int position) {
 
 
-        holder.userName.setText(users.get(position).getUserName());
-        holder.timeOfRentedHours.setText(users.get(position).getRentedHours());
-        holder.group.setText(users.get(position).getGroup());
-        holder.email.setText(users.get(position).getEmail());
+        holder.fio.setText(users.get(position).getFio());
+        holder.institute.setText(users.get(position).getInstitute());
+        holder.time.setText(users.get(position).getTime());
+        holder.text_email.setText(users.get(position).getEmail());
+        holder.reason.setText(users.get(position).getPurpose());
+        holder.room.setText(users.get(position).getRoom());
     }
 
     @Override
@@ -61,20 +61,30 @@ public class UserInitAdapter extends RecyclerView.Adapter<UserInitAdapter.UserIn
 
     public static final class UserInitViewHolder extends RecyclerView.ViewHolder {
 
-        TextView userName;
-        TextView timeOfRentedHours;
-        TextView group;
-        TextView email;
+        TextView fio;
+        TextView institute;
+        TextView reason;
+        TextView room;
+        TextView time;
+        Button text_email;
 
-        public UserInitViewHolder(@NonNull View itemView) {
+
+
+
+
+
+        public UserInitViewHolder( View itemView) {
             super(itemView);
 
-            userName = itemView.findViewById(R.id.text_user_name);
-            timeOfRentedHours = itemView.findViewById(R.id.text_time_of_rented_hours);
-            group = itemView.findViewById(R.id.text_group);
-            email = itemView.findViewById(R.id.text_email);
+            fio = itemView.findViewById(R.id.userFio);
+            institute = itemView.findViewById(R.id.userInstitute);
+            reason = itemView.findViewById(R.id.userReason);
+            text_email = itemView.findViewById(R.id.cancelRentUser);
+            time = itemView.findViewById(R.id.userTime);
+            room = itemView.findViewById(R.id.userPlace);
+
 
         }
     }
 }
-*/
+

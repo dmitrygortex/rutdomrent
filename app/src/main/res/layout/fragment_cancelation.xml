@@ -9,43 +9,40 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayoutTime2"
+        android:id="@+id/linearBooked"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:gravity="center"
-        android:padding="@dimen/base_padding"
-
-        android:text="Мои бронирования"
-        android:fontFamily="@font/inter_bold"
-        android:textColor="@color/white"
-        android:background="@color/darkblue"
         android:weightSum="2"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/darkblue">
 
         <ImageView
             android:id="@+id/back_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
             android:paddingRight="15dp"
-            android:src="@drawable/back_button" />
+            android:layout_marginTop="12dp"
+            android:src="@drawable/back_button"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/my_rent"
+            android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/darkblue"
+            android:paddingRight="30dp"
+            android:background="@color/blue"
             android:fontFamily="@font/inter_bold"
             android:gravity="center"
-
-            android:paddingRight="35dp"
             android:text="Мои бронирования"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </LinearLayout>
@@ -59,6 +56,6 @@
         android:paddingVertical="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTime2"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/linearBooked"></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

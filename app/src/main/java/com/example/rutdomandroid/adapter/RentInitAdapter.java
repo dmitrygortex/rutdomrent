@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -117,6 +118,8 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
 
                 db.collection(room).document(date).set(updates, SetOptions.merge());
               cancelRent(date,room,time,user.getUid());
+                Toast.makeText(context, "Бронь отменена.", Toast.LENGTH_SHORT).show();
+
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, rentInits.size());
             }
@@ -154,11 +157,11 @@ public class RentInitAdapter extends RecyclerView.Adapter<RentInitAdapter.RentIn
         public RentInitViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            yearOfRentInit = itemView.findViewById(R.id.place);
-            dateOfRentInit = itemView.findViewById(R.id.time);
+            yearOfRentInit = itemView.findViewById(R.id.userPlace);
+            dateOfRentInit = itemView.findViewById(R.id.userTime);
             timeOfRentInit = itemView.findViewById(R.id.timeOfRentInit);
-            typeOfRoom = itemView.findViewById(R.id.fio);
-            reasonOfRentInit = itemView.findViewById(R.id.reason);
+            typeOfRoom = itemView.findViewById(R.id.userFio);
+            reasonOfRentInit = itemView.findViewById(R.id.userReason);
             cancelRent = itemView.findViewById(R.id.cancelRent);
         }
     }

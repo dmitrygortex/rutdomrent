@@ -1,44 +1,44 @@
 package com.example.rutdomandroid.model;
 
 public class UserInit {
-    String rentedHours;
-    String userName;
-    String group;
+    String institute;
     String email;
+    String fio;
+    String time;
+    String room;
+    String purpose;
 
-    public UserInit(String rentedHours, String userName, String group, String email) throws Throwable {
-        setRentedHours(rentedHours);
-        setUserName(userName);
-        setGroup(group);
-        setEmail(email);
+    public UserInit(String institute, String email, String fio, String time, String room, String purpose) {
+        this.institute = institute;
+        this.email = email;
+        this.fio = fio;
+        this.time = time;
+        this.room = room;
+        this.purpose = purpose;
     }
 
-    public String getRentedHours() {
-        return rentedHours;
+    public String getInstitute() {
+        return institute;
     }
 
-    public void setRentedHours(String rentedHours) throws Throwable {
-        if (Integer.parseInt(rentedHours) >= 0){
-        this.rentedHours = rentedHours;}
-        else{
-            throw new IllegalArgumentException("Rented hours >= 0");
-        }
+    public void setInstitute(String institute) {
+        this.institute = institute;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFio() {
+        return fio;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
-    public String getGroup() {
-        return group;
+    public String getPurpose() {
+        return purpose;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
     }
 
     public String getEmail() {
@@ -47,5 +47,21 @@ public class UserInit {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rutdomandroid.R;
 import com.example.rutdomandroid.model.TimeSlot;
+import com.example.rutdomandroid.model.UserInit;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;

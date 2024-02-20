@@ -6,11 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rutdomandroid.adapter.TimeAdapter;
+import com.example.rutdomandroid.adapter.UserInitAdapter;
 import com.example.rutdomandroid.databinding.FragmentAdminCalendar1Binding;
 import com.example.rutdomandroid.databinding.FragmentAdminCalendar2Binding;
 import com.example.rutdomandroid.databinding.FragmentAdminCancelationBinding;
@@ -104,6 +107,23 @@ public class AdminInfoFragment extends Fragment {
                 break;
         }
         textView.setText(String.format("%s %s %s г.",day,month,year));
+        String[] values = getResources().getStringArray(R.array.rooms);
+
+
+        if (room.equals("Все комнаты")){
+            getRent("Лекторий");
+            getRent("Фотостудия");
+            getRent("Переговорная");
+        }
+        else getRent(room);
+        Toast.makeText(getContext(), String.format("%s %s",room,data), Toast.LENGTH_SHORT).show();
+
+
+
+        UserInitAdapter userInitAdapter = new UserInitAdapter(inflater.getContext(), bookings);
+        recyclerView = binding.adminCalendarInitsRecycler;
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(userInitAdapter);
 
      /*   db.collection(room).document(date).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -124,6 +144,33 @@ public class AdminInfoFragment extends Fragment {
                         }
             }
      */
+
         return view;
     }
+    public void getRent(String room) {
+        db.collection(room).document(date).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    String rentInit;
+                    Map<String, Object> data = documentSnapshot.getData();
+                    if (data != null) {
+                        for (Map.Entry<String, Object> entry : data.entrySet()) {
+                            String timeFromDb = entry.getKey();
+                            Map<String, String> time_map = (Map<String, String>) data.get(timeFromDb);
+                            String reason = time_map.get("purpose");
+                            String fio = time_map.get("fio");
+                            String email = time_map.get("email");
+                            String institute = time_map.get("institute");
+                            Toast.makeText(getContext(), String.format("%s %s %s",fio,email), Toast.LENGTH_SHORT).show();
+
+                            UserInit userInit = new UserInit(institute, email, fio, timeFromDb, room, reason);
+                            bookings.add(userInit);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 }

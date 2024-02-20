@@ -86,7 +86,7 @@ public class RegisterFragment extends Fragment {
                 String email = binding.emailText.getText().toString();
                 String password = binding.passwordText.getText().toString();
                 String name = binding.FIOText.getText().toString();
-                String institute = binding.institute.getText().toString();
+                String institute = binding.userInstitute.getText().toString();
                 if (email.isEmpty()) {
                     Toast.makeText(getContext(), "Поле email  должно быть заполнено", Toast.LENGTH_SHORT).show();
                     return;

@@ -89,7 +89,7 @@ public class TimeFragment extends Fragment {
 
         }
 
-       // Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(inflater.getContext(), RecyclerView.VERTICAL, false);
         List<String> timeValues = Arrays.asList(getResources().getStringArray(R.array.time_values));
@@ -121,7 +121,7 @@ public class TimeFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                for (TimeSlot timeSlot:timeSlots){
+                                for (TimeSlot timeSlot : timeSlots) {
                                     timeSlot.setEnable(!booked_time.contains(timeSlot.getTime()));
                                 }
                                 timeAdapter.notifyDataSetChanged();
@@ -133,7 +133,6 @@ public class TimeFragment extends Fragment {
                 }
             }
         });
-
 
 
         binding.bookingButton.setOnClickListener(new View.OnClickListener() {
@@ -166,67 +165,7 @@ public class TimeFragment extends Fragment {
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
-
-
-
-
-                Map<String, Object> time_map = new HashMap<>();
-
-                Map<String, Object> newBooking = new HashMap<>();
-                newBooking.put("uid", auth.getCurrentUser().getUid());
-                newBooking.put("purpose", purpose);
-                time_map.put(time, newBooking);
-
-
-                db.collection(room).document(date)
-                        .set(time_map, SetOptions.merge())
-                        .addOnSuccessListener(aVoid -> {
-                            Map<String, Object> bookings = new HashMap<>();
-                            bookings.put("date", date);
-                            bookings.put("time", time);
-                            bookings.put("room", room);
-                            bookings.put("purpose", purpose);
-
-                            db.collection("users").document(auth.getCurrentUser().getUid()).update("bookings", FieldValue.arrayUnion(bookings)).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    RentDatabase rentDatabase = MainActivity.getRentDatabase();
-                                    Executors.newSingleThreadExecutor().execute(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            RentDAO rentDAO = rentDatabase.bookingDao();
-                                            RentEntity existingBooking = rentDAO.getBooking(date, room, time, auth.getUid());
-
-                                            if (existingBooking != null) {
-                                                getActivity().runOnUiThread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        Toast.makeText(getContext(), "Упс. Время уже забронировано", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                            } else {
-                                                RentEntity rent = new RentEntity();
-                                                rent.setDate(date);
-                                                rent.setRoom(room);
-                                                rent.setPurpose(purpose);
-                                                rent.setTime(time);
-                                                rent.setUid(auth.getUid());
-                                                rentDatabase.bookingDao().createRent(rent);
-                                            }
-
-                                        }
-                                    });
-
-                                }
-                            });
-                            Toast.makeText(getContext(), "Помещение забронировано!", Toast.LENGTH_SHORT).show();
-                        })
-                        .addOnFailureListener(e -> {
-                            Toast.makeText(getContext(), "Что-то пошло не так.", Toast.LENGTH_SHORT).show();
-
-                        });
-               // Toast.makeText(getContext(), time, Toast.LENGTH_SHORT).show();
-
+                createRent();
 
             }
         });
@@ -265,8 +204,70 @@ public class TimeFragment extends Fragment {
             alarmManager = (AlarmManager) this.getContext().getSystemService(ALARM_SERVICE);
         }
         alarmManager.cancel(pendingIntent2);
-       // Toast.makeText(getContext(), "Напоминание закрыто", Toast.LENGTH_LONG).show();
+        // Toast.makeText(getContext(), "Напоминание закрыто", Toast.LENGTH_LONG).show();
 
+    }
+
+    public void createRent() {
+        Map<String, Object> time_map = new HashMap<>();
+
+        Map<String, Object> newBooking = new HashMap<>();
+        newBooking.put("uid", auth.getCurrentUser().getUid());
+        newBooking.put("purpose", purpose);
+        newBooking.put("email", MainActivity.email);
+        newBooking.put("fio", MainActivity.fio);
+        newBooking.put("institute", MainActivity.institute);
+
+        time_map.put(time, newBooking);
+
+
+        db.collection(room).document(date)
+                .set(time_map, SetOptions.merge())
+                .addOnSuccessListener(aVoid -> {
+                    Map<String, Object> bookings = new HashMap<>();
+                    bookings.put("date", date);
+                    bookings.put("time", time);
+                    bookings.put("room", room);
+                    bookings.put("purpose", purpose);
+
+                    db.collection("users").document(auth.getCurrentUser().getUid()).update("bookings", FieldValue.arrayUnion(bookings)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            RentDatabase rentDatabase = MainActivity.getRentDatabase();
+                            Executors.newSingleThreadExecutor().execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    RentDAO rentDAO = rentDatabase.bookingDao();
+                                    RentEntity existingBooking = rentDAO.getBooking(date, room, time, auth.getUid());
+
+                                    if (existingBooking != null) {
+                                        getActivity().runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(getContext(), "Упс. Время уже забронировано", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    } else {
+                                        RentEntity rent = new RentEntity();
+                                        rent.setDate(date);
+                                        rent.setRoom(room);
+                                        rent.setPurpose(purpose);
+                                        rent.setTime(time);
+                                        rent.setUid(auth.getUid());
+                                        rentDatabase.bookingDao().createRent(rent);
+                                    }
+
+                                }
+                            });
+
+                        }
+                    });
+                    Toast.makeText(getContext(), "Помещение забронировано!", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Что-то пошло не так.", Toast.LENGTH_SHORT).show();
+
+                });
     }
 
 }
