@@ -188,13 +188,13 @@ public class TimeFragment extends Fragment {
         Intent intent = new Intent(this.getContext(), AlarmReceiver.class);
         pendingIntent2 = PendingIntent.getBroadcast(this.getContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, selectedTime - AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_DAY, pendingIntent2);
-       /* getActivity().runOnUiThread(new Runnable() {
+        getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Toast.makeText(getContext(), "Напоминание запущено", Toast.LENGTH_LONG).show();
             }
         });
-*/
+
     }
 
     private void cancelAlarm() {

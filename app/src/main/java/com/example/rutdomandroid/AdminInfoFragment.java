@@ -1,6 +1,7 @@
 package com.example.rutdomandroid;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +36,7 @@ public class AdminInfoFragment extends Fragment {
     FragmentAdminCalendar2Binding binding;
     FirebaseAuth auth;
     FirebaseFirestore db;
-    List<UserInit> bookings;
+    List<UserInit> bookings =new ArrayList<>();
     Button ban_button;
     Button unban_button;
     TextView textView;
@@ -116,34 +119,29 @@ public class AdminInfoFragment extends Fragment {
             getRent("Переговорная");
         }
         else getRent(room);
-        Toast.makeText(getContext(), String.format("%s %s",room,data), Toast.LENGTH_SHORT).show();
 
-
-
-        UserInitAdapter userInitAdapter = new UserInitAdapter(inflater.getContext(), bookings);
-        recyclerView = binding.adminCalendarInitsRecycler;
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(userInitAdapter);
-
-     /*   db.collection(room).document(date).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()){
-                    String rentInit;
-                    Map<String, Object> data = documentSnapshot.getData();
-                    if (data != null) {
-                        for (Map.Entry<String, Object> entry : data.entrySet()) {
-                            String timeFromDb = entry.getKey();
-                            Map<String, String> time_map = (Map<String, String>) data.get(timeFromDb);
-                            reason=  time_map.get("purpose");
-                            fio=  time_map.get("fio");
-                            email=  time_map.get("email");
-                            institute=  time_map.get("institute");
-                            RentInit rentInit1=new RentInit(auth.getUid(),)
-                            UserInit userInit=new UserInit(fio,institute,email,)
-                        }
+            public void run() {
+                UserInitAdapter userInitAdapter = new UserInitAdapter(inflater.getContext(), bookings);
+                recyclerView = binding.adminCalendarInitsRecycler;
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(userInitAdapter);
             }
-     */
+        }, 2000);
+
+        binding.backLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout, new AdminPanelFragment(), null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         return view;
     }
@@ -152,18 +150,15 @@ public class AdminInfoFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
-                    String rentInit;
                     Map<String, Object> data = documentSnapshot.getData();
                     if (data != null) {
                         for (Map.Entry<String, Object> entry : data.entrySet()) {
                             String timeFromDb = entry.getKey();
-                            Map<String, String> time_map = (Map<String, String>) data.get(timeFromDb);
-                            String reason = time_map.get("purpose");
-                            String fio = time_map.get("fio");
-                            String email = time_map.get("email");
-                            String institute = time_map.get("institute");
-                            Toast.makeText(getContext(), String.format("%s %s %s",fio,email), Toast.LENGTH_SHORT).show();
-
+                            Map<String, String> map = (Map<String, String>) data.get(timeFromDb);
+                            String reason = map.get("purpose");
+                            String fio = map.get("fio");
+                            String email = map.get("email");
+                            String institute = map.get("institute");
                             UserInit userInit = new UserInit(institute, email, fio, timeFromDb, room, reason);
                             bookings.add(userInit);
                         }
