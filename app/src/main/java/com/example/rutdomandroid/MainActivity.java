@@ -61,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (auth.getCurrentUser() == null) {
             replaceFragment(new LoginFragment());
-        } else replaceFragment(new InfoFragment());
-        replaceFragment(new LoginFragment());
-        getCredentials();
+        } else {
+            replaceFragment(new InfoFragment());
+            getCredentials();
+
+        }
 
 
         binding.buttonNavView.setOnItemSelectedListener(item -> {

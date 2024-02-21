@@ -32,9 +32,7 @@ public class InfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info, container, false);
 
         MainActivity mainActivity = (MainActivity) requireActivity();
-        if (mainActivity != null) {
-            mainActivity.setButtonNavViewVisibility(View.VISIBLE);
-        }
+        mainActivity.setButtonNavViewVisibility(View.VISIBLE);
 
         return view;
     }
