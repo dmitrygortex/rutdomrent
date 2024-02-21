@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#00215A</color>
+
+	<color name="darkblue">#00215A</color>
+	<color name="green1">#BBF5C4</color>
+	<color name="red1">#EFC4C4</color>
+	<color name="blue1">#6D72AF</color>
+	<color name="blue2">#9CA0D0</color>
+	<color name="blue3">#C7CAE8</color>
+	<color name="blue4">#EAEBF8</color>
+	<color name="blue5">#274882</color>
+
+	<color name="colorHintBlue">#6D72AF</color>
+    <color name="textviewcolor">#858585</color>
+	<!-- home colors -->
+	<color name="colorPrimary">#008577</color>
+	<color name="colorPrimaryDark">#00574B</color>
+	<color name="colorAccent">#D81B60</color>
+	<color name="purple_200">#FFBB86FC</color>
+	<color name="green">#39D665</color>
+
+	39D665
+	<color name="purple_500">#FF6200EE</color>
+	<color name="purple_700">#FF3700B3</color>
+	<color name="teal_200">#FF03DAC5</color>
+	<color name="teal_700">#FF018786</color>
+
+	<color name="grey">#858585</color>
+	<color name="grey2">#C6C6C6</color>
+	<color name="_bg__home_ek2_color">#EAEBF8</color>
+	<color name="_bg__time_ek1_color">#000000</color>
+	<color name="rectangle_4_color">#6D72AF</color>
+	<color name="rectangle_10_color">#C7CAE8</color>
+</resources>
