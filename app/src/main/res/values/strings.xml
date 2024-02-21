@@ -3,7 +3,6 @@
         <item>Лекторий</item>
         <item>Переговорная</item>
         <item>Фотостудия</item>
-        <item>Все комнаты</item>
 
     </string-array>
     <string-array name="time_values">

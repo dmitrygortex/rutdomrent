@@ -23,8 +23,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Locale;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 public class MainActivity extends AppCompatActivity {
     private static RentDatabase rentDatabase;
@@ -63,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (auth.getCurrentUser() == null) {
             replaceFragment(new LoginFragment());
-
         } else replaceFragment(new InfoFragment());
         replaceFragment(new LoginFragment());
+        getCredentials();
+
 
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.info_item) {
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         return userDatabase;
     }
 
-   /* public void getCredentials() {
+    public void getCredentials() {
         db.collection("users").document(auth.getCurrentUser().getUid())
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -123,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
-                });*/
+                });
+    }
 }
 
 

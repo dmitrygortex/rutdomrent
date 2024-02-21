@@ -40,6 +40,7 @@ public class RentFragment extends Fragment {
         binding = FragmentRentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         String[] values = getResources().getStringArray(R.array.rooms);
+
         Spinner spinner = binding.spinner;
         calendar=binding.calendarView;
         calendar.setMinDate(System.currentTimeMillis());

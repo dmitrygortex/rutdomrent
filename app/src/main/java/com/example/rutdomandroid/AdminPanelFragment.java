@@ -54,7 +54,13 @@ public class AdminPanelFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         binding = FragmentAdminCalendar1Binding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        String[] values = getResources().getStringArray(R.array.rooms);
+        String[] values = new String[4];
+        values[0]="Все комнаты";
+        values[1]="Лекторий";
+
+        values[2]="Переговорная";
+        values[3]="Фотостудия";
+
         Spinner spinner = binding.spinner;
         CalendarView calendar=binding.calendarView;
         calendar.setMinDate(System.currentTimeMillis());

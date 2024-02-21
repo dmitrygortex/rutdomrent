@@ -113,7 +113,7 @@
                     android:maxLines="3"
                     android:text="Фотографии макета трамвая"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/userFio"></TextView>
