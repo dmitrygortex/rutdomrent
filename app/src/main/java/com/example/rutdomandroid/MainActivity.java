@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        getCredentials();
         String languageToLoad = "ru";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
@@ -62,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
                 .fallbackToDestructiveMigration()
                 .build();
 
-
         if (auth.getCurrentUser() == null) {
             replaceFragment(new LoginFragment());
 
         } else replaceFragment(new InfoFragment());
+        replaceFragment(new LoginFragment());
+
         binding.buttonNavView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.info_item) {
                 replaceFragment(new InfoFragment());
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         return userDatabase;
     }
 
-    public void getCredentials() {
+   /* public void getCredentials() {
         db.collection("users").document(auth.getCurrentUser().getUid())
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -123,9 +123,9 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
-                });
-    }
+                });*/
 }
+
 
 
 
